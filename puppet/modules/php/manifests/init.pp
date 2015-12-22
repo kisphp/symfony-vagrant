@@ -11,4 +11,3 @@ class php {
     require => Package['php5-fpm'],
   }
 }
-
