@@ -70,3 +70,12 @@ DATABASE_USERNAME = developer
 DATABASE_PASSWORD = develop123
 DATABASE_NAME = development
 ```
+
+## Ubuntu fixes
+```bash
+sudo apt-get install nfs-kernel-server
+```
+
+
+
+
