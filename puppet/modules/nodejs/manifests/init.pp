@@ -2,7 +2,7 @@ class nodejs {
 
   package { ['nodejs', 'npm']:
     ensure => 'present',
-    require => Exec['apt-get update'],
+    require => Exec['apt-get-update'],
   }
 
   file { '/usr/bin/node':

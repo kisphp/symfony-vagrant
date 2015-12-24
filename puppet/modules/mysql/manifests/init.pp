@@ -6,7 +6,7 @@ class mysql {
 
   package { ['mysql-server']:
     ensure => present,
-    require => Exec['apt-get update'],
+    require => Exec['apt-get-update'],
   }
 
   service { 'mysql':
