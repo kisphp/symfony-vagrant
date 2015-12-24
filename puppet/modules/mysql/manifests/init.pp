@@ -49,8 +49,4 @@ class mysql {
       Exec["create-user"],
     ]
   }
-
-  file { '/home/vagrant/server/var/logs/':
-    ensure => 'present',
-  }
 }

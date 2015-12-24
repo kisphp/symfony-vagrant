@@ -33,4 +33,8 @@ class nginx {
       File['default-nginx-disable'],
     ],
   }
+
+  file { ['/home/vagrant/server/var/', '/home/vagrant/server/var/logs/']:
+    ensure => 'directory',
+  }
 }
