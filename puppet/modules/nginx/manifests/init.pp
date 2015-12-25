@@ -33,4 +33,14 @@ class nginx {
       File['default-nginx-disable'],
     ],
   }
+
+  exec { 'check-app-dev':
+    command => '/bin/true',
+    onlyif => '/usr/bin/test [-e /home/vagrant/server/web/app_dev.php && ! -f /home/vagrant/server/web/index.php ]'
+  }
+
+  exec { 'write-index':
+    command => "/bin/cp /home/vagrant/server/web/app_dev.php /home/vagrant/server/web/index.php",
+    require => Exec['check-app-dev'],
+  }
 }
