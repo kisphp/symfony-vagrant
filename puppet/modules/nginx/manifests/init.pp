@@ -11,10 +11,10 @@ class nginx {
   }
 
   file { 'vagrant-nginx':
-    path => '/etc/nginx/sites-available/project.local',
+    path => '/etc/nginx/sites-available/dev.local',
     ensure => file,
     require => Package['nginx'],
-    source => 'puppet:///modules/nginx/project.local',
+    source => 'puppet:///modules/nginx/dev.local',
   }
 
   file { 'default-nginx-disable':
@@ -24,8 +24,8 @@ class nginx {
   }
 
   file { 'vagrant-nginx-enable':
-    path => '/etc/nginx/sites-enabled/project.local',
-    target  => '/etc/nginx/sites-available/project.local',
+    path => '/etc/nginx/sites-enabled/dev.local',
+    target  => '/etc/nginx/sites-available/dev.local',
     ensure => link,
     notify => Service['nginx'],
     require => [
@@ -34,13 +34,30 @@ class nginx {
     ],
   }
 
-  exec { 'check-app-dev':
+  exec { 'check-web-directory-existance':
     command => '/bin/true',
-    onlyif => '/usr/bin/test [-e /home/vagrant/server/web/app_dev.php && ! -f /home/vagrant/server/web/index.php ]'
+    onlyif => '/usr/bin/test ! -d /home/vagrant/server/web',
   }
 
-  exec { 'write-index':
-    command => "/bin/cp /home/vagrant/server/web/app_dev.php /home/vagrant/server/web/index.php",
+  file { '/home/vagrant/server/web/':
+    ensure => 'directory',
+    require => Exec['check-web-directory-existance'],
+  }
+
+  exec { 'check-app-dev':
+    command => '/bin/true',
+    onlyif => '/usr/bin/test ! -f /home/vagrant/server/web/index.php '
+  }
+
+  file { 'dummy-index-php-file':
+    path => '/home/vagrant/server/web/index.php',
+    source => 'puppet:///modules/nginx/index.php',
+    ensure => file,
     require => Exec['check-app-dev'],
   }
+
+#  exec { 'write-index':
+#    command => "echo 'It works' > /home/vagrant/server/web/index.php",
+#    require => Exec['check-app-dev'],
+#  }
 }
