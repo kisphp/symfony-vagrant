@@ -43,21 +43,4 @@ class nginx {
     ensure => 'directory',
     require => Exec['check-web-directory-existance'],
   }
-
-  exec { 'check-app-dev':
-    command => '/bin/true',
-    onlyif => '/usr/bin/test ! -f /home/vagrant/server/web/index.php '
-  }
-
-  file { 'dummy-index-php-file':
-    path => '/home/vagrant/server/web/index.php',
-    source => 'puppet:///modules/nginx/index.php',
-    ensure => file,
-    require => Exec['check-app-dev'],
-  }
-
-#  exec { 'write-index':
-#    command => "echo 'It works' > /home/vagrant/server/web/index.php",
-#    require => Exec['check-app-dev'],
-#  }
 }
