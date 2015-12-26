@@ -7,13 +7,13 @@ server {
     root /home/vagrant/server/web;
 
     location / {
-        try_files $uri /app_dev.php$is_args$args;
+        try_files $uri /index.php$is_args$args;
     }
 
     # DEV
     # This rule should only be placed on your development environment
     # In production, don't include this and don't deploy app_dev.php or config.php
-    location ~ ^/(app_dev|config)\.php(/|$) {
+    location ~ ^/(app_dev|config|index)\.php(/|$) {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
         include fastcgi_params;
@@ -22,6 +22,6 @@ server {
         fastcgi_param DOCUMENT_ROOT $realpath_root;
     }
 
-    error_log /home/vagrant/server/var/logs/project_error.log;
-    access_log /home/vagrant/server/var/logs/project_access.log;
+    error_log /home/vagrant/server/nginx-error.log;
+    access_log /home/vagrant/server/nginx-access.log;
 }

@@ -6,7 +6,7 @@ class mysql {
 
   package { ['mysql-server']:
     ensure => present,
-    require => Exec['apt-get update'],
+    require => Exec['apt-get-update'],
   }
 
   service { 'mysql':
@@ -48,9 +48,5 @@ class mysql {
       Service["mysql"],
       Exec["create-user"],
     ]
-  }
-
-  file { '/home/vagrant/server/var/logs/':
-    ensure => 'present',
   }
 }

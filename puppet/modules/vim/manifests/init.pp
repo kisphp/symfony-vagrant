@@ -2,7 +2,7 @@ class vim {
 
   package { ['vim']:
     ensure => 'present',
-    require => Exec['apt-get update'],
+    require => Exec['apt-get-update'],
   }
 
   file { 'vim-config':
