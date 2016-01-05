@@ -1,9 +1,10 @@
 VM_IP = '10.10.0.80'
 SYNC_TYPE = 'nfs'
+VM_NAME = 'dev.local'
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/trusty64"
-    config.vm.hostname = "dev.local"
+    config.vm.hostname = VM_NAME
     config.vm.network :private_network, ip: VM_IP
     config.vm.synced_folder "../", "/home/vagrant/server", type: SYNC_TYPE, create: true
     config.nfs.map_uid = Process.uid
@@ -16,7 +17,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = "DEV local"
+        vb.name = VM_NAME
         vb.customize([
             "modifyvm", :id,
             "--memory", 1024,
