@@ -26,7 +26,7 @@ echo "_vm/" >> .gitignore
 cd server
 
 # install dependencies
-composer install
+composer update
 
 ```
 
