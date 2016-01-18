@@ -1,3 +1,9 @@
+## Requirements
+
+- Mac OS X or Ubuntu/Debian Linux
+- Vagrant 1.7.2
+- VirtualBox 4.3.30
+
 ## Install
 
 ```bash
@@ -71,11 +77,7 @@ DATABASE_PASSWORD = develop123
 DATABASE_NAME = development
 ```
 
-## Ubuntu fixes
+## Ubuntu fixes (run before `vagrant up`)
 ```bash
 sudo apt-get install nfs-kernel-server
 ```
-
-
-
-
