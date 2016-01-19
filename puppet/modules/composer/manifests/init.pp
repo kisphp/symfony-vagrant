@@ -1,12 +1,9 @@
 class composer {
 
   exec { 'download-composer':
-    command => "curl -sS https://getcomposer.org/installer | php",
+    command => "wget https://getcomposer.org/composer.phar && chmod +x composer.phar",
     path => ['/bin', '/usr/bin'],
-    require => [
-      Package['curl'],
-      Package['php5-cli'],
-    ]
+    require => Package['php5-cli'],
   }
 
   exec { 'install-composer':
