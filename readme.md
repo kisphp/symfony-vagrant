@@ -8,13 +8,13 @@
 
 ```bash
 # download symfony basic project (you may clone your own symfony project)
-git clone git@github.com:symfony/symfony-standard.git
+git clone https://github.com/symfony/symfony-standard.git
 
 # go into project directory
 cd symfony-standard
 
 # clone vagrant VM
-git clone git@github.com:kisphp/symfony-vagrant.git _vm
+git clone https://github.com/kisphp/symfony-vagrant.git _vm
 
 # go into vm directory
 cd _vm
