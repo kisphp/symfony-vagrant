@@ -1,6 +1,6 @@
 VM_IP = '10.10.0.80'
-SYNC_TYPE = 'nfs'
 VM_NAME = 'dev.local'
+SYNC_TYPE = 'nfs'
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/trusty64"
@@ -20,7 +20,7 @@ Vagrant.configure("2") do |config|
         vb.name = VM_NAME
         vb.customize([
             "modifyvm", :id,
-            "--memory", 1024,
+            "--memory", 2048,
             "--cpus", 1,
             "--vram", 32
         ])
