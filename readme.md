@@ -42,6 +42,7 @@ Composer will require interaction to build `parameters.yml` file.
 
 - curl
 - tree
+- ohmyzsh
 - mc
 - make
 - wget

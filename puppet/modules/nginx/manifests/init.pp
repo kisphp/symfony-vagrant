@@ -19,7 +19,7 @@ class nginx {
 
   file { 'default-nginx-disable':
     path => '/etc/nginx/sites-enabled/default',
-    ensure => absend,
+    ensure => absent,
     require => Package['nginx'],
   }
 
