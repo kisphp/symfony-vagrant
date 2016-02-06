@@ -38,6 +38,21 @@ composer update
 
 Composer will require interaction to build `parameters.yml` file.
 
+
+### MySQL credentials
+
+```
+DATABASE_USERNAME = developer
+DATABASE_PASSWORD = develop123
+DATABASE_NAME = development
+```
+
+## Ubuntu fixes (run before `vagrant up`)
+```bash
+sudo apt-get install nfs-kernel-server
+```
+
+
 ### Installed Packages in VM
 
 - curl
@@ -70,15 +85,3 @@ Composer will require interaction to build `parameters.yml` file.
 - composer
 - git
 
-### MySQL credentials
-
-```
-DATABASE_USERNAME = developer
-DATABASE_PASSWORD = develop123
-DATABASE_NAME = development
-```
-
-## Ubuntu fixes (run before `vagrant up`)
-```bash
-sudo apt-get install nfs-kernel-server
-```
