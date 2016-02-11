@@ -1,5 +1,6 @@
 VM_IP = '10.10.0.80'
 VM_NAME = 'dev.local'
+VM_RAM = 2048
 SYNC_TYPE = 'nfs'
 
 Vagrant.configure("2") do |config|
@@ -20,7 +21,7 @@ Vagrant.configure("2") do |config|
         vb.name = VM_NAME
         vb.customize([
             "modifyvm", :id,
-            "--memory", 2048,
+            "--memory", VM_RAM,
             "--cpus", 1,
             "--vram", 32
         ])
