@@ -97,3 +97,7 @@ DATABASE_USERNAME = developer
 DATABASE_PASSWORD = develop123
 DATABASE_NAME = development
 ```
+
+## Redis
+
+> Redis requires no credentials to login
