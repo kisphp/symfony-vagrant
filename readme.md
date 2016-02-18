@@ -55,17 +55,19 @@ sudo apt-get install nfs-kernel-server
 
 ### Installed Packages in VM
 
-- curl
-- tree
-- ohmyzsh
-- mc
-- make
-- wget
-- htop
 - build-essential
-- python
-- vim
+- composer
+- curl
+- git
+- htop
+- imagemagick
+- mc
+- mcrypt
+- make
+- memcached
+- mysql
 - nginx
+- ohmyzsh
 - php
     - php5-fpm
     - php5-gd
@@ -73,15 +75,13 @@ sudo apt-get install nfs-kernel-server
     - php5-cli
     - php-pear
     - php5-mcrypt
-    - mcrypt
     - php5-imagick
-    - imagemagick
     - php5-curl
     - php5-memcache
     - php5-memcached
     - php5-sqlite
-    - memcached
-- mysql
-- composer
-- git
-
+- python
+- redis
+- tree
+- vim
+- wget
