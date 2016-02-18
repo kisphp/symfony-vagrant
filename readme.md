@@ -1,10 +1,10 @@
 ## Requirements
 
-- Mac OS X or Ubuntu/Debian Linux
+- Mac OS X or Ubuntu Desktop
 - Vagrant 1.7.2
-- VirtualBox 4.3.30
+- VirtualBox >= 4.3.30
 
-## Install
+## Installation
 
 ```bash
 # download symfony basic project (you may clone your own symfony project)
@@ -38,6 +38,10 @@ composer update
 
 Composer will require interaction to build `parameters.yml` file.
 
+## Ubuntu host fixes 
+```bash
+sudo apt-get install nfs-kernel-server
+```
 
 ### MySQL credentials
 
@@ -85,3 +89,11 @@ sudo apt-get install nfs-kernel-server
 - tree
 - vim
 - wget
+
+### MySQL credentials
+
+```
+DATABASE_USERNAME = developer
+DATABASE_PASSWORD = develop123
+DATABASE_NAME = development
+```
