@@ -84,5 +84,6 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias ngre="sudo /etc/init.d/nginx restart"
 alias myre="sudo /etc/init.d/mysql restart"
+alias gitl='git log --oneline --decorate --graph'
 
 cd ./server
