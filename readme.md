@@ -77,6 +77,7 @@ sudo apt-get install nfs-kernel-server
     - php5-gd
     - php5-mysql
     - php5-cli
+    - php5-dev
     - php-pear
     - php5-mcrypt
     - php5-imagick
