@@ -1,8 +1,13 @@
 class nodejs {
 
-  package { ['nodejs', 'npm']:
-    ensure => 'present',
+  exec { "nodejs-prepare":
+    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup_5.x | /usr/bin/sudo -E bash -",
     require => Exec['apt-get-update'],
+  }
+
+  package { ['nodejs']:
+    ensure => 'present',
+    require => Exec['nodejs-prepare'],
   }
 
   file { '/usr/bin/node':
@@ -11,18 +16,8 @@ class nodejs {
     require => Package["nodejs"],
   }
 
-  exec { 'upgrade-node-js':
-    command => "/usr/bin/npm cache clean -f && /usr/bin/npm install -g n && n stable",
-    require => Package['npm'],
-  }
-
-  exec { 'install-bower':
-    command => "/usr/bin/npm install -g bower",
-    require => Exec['upgrade-node-js'],
-  }
-
   exec { 'install-gulp':
     command => "/usr/bin/npm install -g gulp",
-    require => Exec['upgrade-node-js'],
+    require => Package['nodejs'],
   }
 }
