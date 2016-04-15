@@ -20,4 +20,9 @@ class nodejs {
     command => "/usr/bin/npm install -g gulp",
     require => Package['nodejs'],
   }
+
+  exec { 'install-bower':
+    command => "/usr/bin/npm install -g bower",
+    require => Package['nodejs'],
+  }
 }

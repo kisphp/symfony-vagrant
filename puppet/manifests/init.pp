@@ -3,7 +3,7 @@ exec { 'apt-get-update':
     path => '/usr/bin',
 }
 
-package { ['curl', 'tree', 'mc', 'make', 'wget', 'htop', 'build-essential', 'python', 'zsh']:
+package { ['curl', 'tree', 'mc', 'make', 'wget', 'htop', 'build-essential', 'python', 'python-pip', 'zsh']:
     ensure => present,
     require => Exec['apt-get-update'],
 }
