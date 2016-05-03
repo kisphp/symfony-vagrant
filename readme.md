@@ -36,6 +36,8 @@ composer update
 
 ```
 
+> Composer will require interaction to build `parameters.yml` file.
+
 ## Use multiple VMs
 
 To use multiple VMs please change `VM_IP` and `VM_NAME` in Vagrantfile:
@@ -44,8 +46,6 @@ To use multiple VMs please change `VM_IP` and `VM_NAME` in Vagrantfile:
 VM_IP = '10.10.0.81' # changed ip from 80 -> 81
 VM_NAME = 'project.local' # changed vm name to project.local
 ```
-
-Composer will require interaction to build `parameters.yml` file.
 
 ## Ubuntu host fixes 
 ```bash
