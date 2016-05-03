@@ -40,12 +40,14 @@ composer update
 
 ## Use multiple VMs
 
-To use multiple VMs please change `VM_IP` and `VM_NAME` in Vagrantfile:
+To use multiple VMs please change `VM_IP` and `VM_NAME` in Vagrantfile before running `vagrant up`:
 
 ```ruby
 VM_IP = '10.10.0.81' # changed ip from 80 -> 81
 VM_NAME = 'project.local' # changed vm name to project.local
 ```
+
+> If you want to host multiple projects on the same VM, please use [Vagrant Multiserver VM](https://github.com/kisphp/vagrant-multiserver)
 
 ## Ubuntu host fixes 
 ```bash
