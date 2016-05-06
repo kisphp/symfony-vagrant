@@ -45,6 +45,7 @@ To use multiple VMs please change `VM_IP` and `VM_NAME` in Vagrantfile before ru
 ```ruby
 VM_IP = '10.10.0.81' # changed ip from 80 -> 81
 VM_NAME = 'project.local' # changed vm name to project.local
+SSH_PORT = 10081 # you may change the host ssh port
 ```
 
 > If you want to host multiple projects on the same VM, please use [Vagrant Multiserver VM](https://github.com/kisphp/vagrant-multiserver)
@@ -101,14 +102,6 @@ sudo apt-get install nfs-kernel-server
 - tree
 - vim
 - wget
-
-### MySQL credentials
-
-```
-DATABASE_USERNAME = developer
-DATABASE_PASSWORD = develop123
-DATABASE_NAME = development
-```
 
 ## Redis
 
