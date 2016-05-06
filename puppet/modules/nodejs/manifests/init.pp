@@ -25,4 +25,9 @@ class nodejs {
     command => "/usr/bin/npm install -g bower",
     require => Package['nodejs'],
   }
+
+  exec { 'install-webpack':
+    command => "/usr/bin/npm install -g webpack",
+    require => Package['nodejs'],
+  }
 }
