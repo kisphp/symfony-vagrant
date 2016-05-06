@@ -103,6 +103,14 @@ sudo apt-get install nfs-kernel-server
 - vim
 - wget
 
+## Javascript related packages
+
+- Nodejs
+- npm
+- gulp
+- bower
+- webpack
+
 ## Redis
 
 > Redis requires no credentials to login
