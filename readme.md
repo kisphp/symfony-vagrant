@@ -73,18 +73,18 @@ sudo apt-get install nfs-kernel-server
 
 - build-essential
 - composer
-- curl
-- git
+- curl - 7.35
+- git - 1.9.1
 - htop
-- imagemagick
+- imagemagick - 6.7.7-10
 - mc
 - mcrypt
 - make
 - memcached
-- mysql 5.6
-- nginx
+- mysql - 5.6
+- nginx - 1.4.6
 - ohmyzsh
-- php
+- php - 5.5.9
     - php5-fpm
     - php5-gd
     - php5-mysql
@@ -97,19 +97,19 @@ sudo apt-get install nfs-kernel-server
     - php5-memcache
     - php5-memcached
     - php5-sqlite
-- python
-- redis
+- python - 2.7.6/3.4.3
+- redis - 2.8.4
 - tree
 - vim
 - wget
 
 ## Javascript related packages
 
-- Nodejs
-- npm
-- gulp
-- bower
-- webpack
+- Nodejs - 5.11.1
+- npm - 3.8.6
+- gulp - 3.9.1
+- bower - 1.7.9
+- webpack - 1.13.0
 
 ## Redis
 
