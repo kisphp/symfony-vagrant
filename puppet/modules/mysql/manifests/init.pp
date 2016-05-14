@@ -4,19 +4,19 @@ class mysql {
   $password = 'develop123'
   $database_name = 'development'
 
-  package { ['mysql-server']:
+  package { ['mysql-server-5.6']:
     ensure => present,
     require => Exec['apt-get-update'],
   }
 
   service { 'mysql':
     ensure => running,
-    require => Package['mysql-server'],
+    require => Package['mysql-server-5.6'],
   }
 
   file { '/etc/mysql/my.cnf':
     source => 'puppet:///modules/mysql/my.cnf',
-    require => Package['mysql-server'],
+    require => Package['mysql-server-5.6'],
     notify => Service['mysql'],
   }
 
