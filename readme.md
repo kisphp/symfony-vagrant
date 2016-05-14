@@ -81,7 +81,7 @@ sudo apt-get install nfs-kernel-server
 - mcrypt
 - make
 - memcached
-- mysql
+- mysql 5.6
 - nginx
 - ohmyzsh
 - php
