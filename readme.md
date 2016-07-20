@@ -84,7 +84,7 @@ sudo apt-get install nfs-kernel-server
 - mysql - 5.6
 - nginx - 1.4.6
 - ohmyzsh
-- php - 5.5.9
+- php - 5.6.x
     - php5-fpm
     - php5-gd
     - php5-mysql
