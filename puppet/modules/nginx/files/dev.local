@@ -13,9 +13,10 @@ server {
     # DEV
     # This rule should only be placed on your development environment
     # In production, don't include this and don't deploy app_dev.php or config.php
-    location ~ ^/(app_dev|config|index)\.php(/|$) {
+    location ~ \.php$ {
         fastcgi_pass unix:/var/run/php5-fpm.sock;
         fastcgi_split_path_info ^(.+\.php)(/.*)$;
+        fastcgi_index index.php;
         include fastcgi_params;
 
         fastcgi_param  SCRIPT_FILENAME  $realpath_root$fastcgi_script_name;
