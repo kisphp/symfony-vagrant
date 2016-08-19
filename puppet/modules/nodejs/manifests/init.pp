@@ -1,7 +1,7 @@
 class nodejs {
 
   exec { "nodejs-prepare":
-    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup_5.x | /usr/bin/sudo -E bash -",
+    command => "/usr/bin/curl -sL https://deb.nodesource.com/setup_6.x | /usr/bin/sudo -E bash -",
     require => Exec['apt-get-update'],
   }
 
