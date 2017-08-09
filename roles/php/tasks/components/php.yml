@@ -49,19 +49,19 @@
     mode: 0644
     force: yes
 
-#- name: "Make sure the socket file has the correct rights"
-#  file:
-#    path: "/var/run/php/php{{ php_version }}-fpm.sock"
-#    owner: "root"
-#    group: "root"
-#    mode: "o+rw"
-#    force: "yes"
-#  become: yes
-#  become_method: "sudo"
-#  when: webserver_name == "nginx"
-#
-#- name: "Restart php-fpm"
-#  service: name={{ php7_fpm_service_name }} state=restarted
-#  become: yes
-#  become_method: "sudo"
-#  when: webserver_name == "nginx"
+- name: "Make sure the socket file has the correct rights"
+  file:
+    path: "/var/run/php/php{{ php_version }}-fpm.sock"
+    owner: "root"
+    group: "root"
+    mode: "o+rw"
+    force: "yes"
+  become: yes
+  become_method: "sudo"
+  when: webserver_name == "nginx"
+
+- name: "Restart php-fpm"
+  service: name={{ php7_fpm_service_name }} state=restarted
+  become: yes
+  become_method: "sudo"
+  when: webserver_name == "nginx"

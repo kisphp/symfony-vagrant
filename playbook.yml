@@ -4,7 +4,6 @@
   become_method: sudo
 
   vars_files:
-    - group_vars/all.yml
     - environment.yml
 
   pre_tasks:
@@ -19,11 +18,11 @@
 #    - { role: ssh }
 #    - { role: oh-my-zsh }
     #- { role: nodejs }
-    #- { role: "{{ webserver_name }}" }
+    - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
     #- { role: composer }
     #- { role: kisphp }
     #- { role: redis }
     #- { role: mysql }
-    #- { role: project }
+    - { role: project }
     #- { role: fail2ban }

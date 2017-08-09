@@ -1,0 +1,19 @@
+---
+- name: "Create site vhost for domains"
+  become: yes
+  become_method: "sudo"
+  template:
+    src="apache2/site.conf.j2"
+    dest="/etc/apache2/sites-available/{{ project_name }}.conf"
+    owner=root
+    mode=0644
+  notify:
+    - reload apache
+
+- name: "Create vhost symlink"
+  file:
+    src="/etc/apache2/sites-available/{{ project_name }}.conf"
+    dest="/etc/apache2/sites-enabled/{{ project_name }}.conf"
+    state=link
+  notify:
+    - reload apache
