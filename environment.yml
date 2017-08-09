@@ -22,3 +22,12 @@ php_xdebug_remote_enable: 1
 php_xdebug_remote_autostart: 1
 php_xdebug_profiler_enable: 1
 php_xdebug_remote_connect_back: 1
+
+mysql_db_user: developer
+mysql_db_pass: develop123
+mysql_db_name: development
+
+## NodeJS
+## Pin-Priority of NodeSource repository
+nodejs_nodesource_pin_priority: 500
+nodejs_version: "6.x"

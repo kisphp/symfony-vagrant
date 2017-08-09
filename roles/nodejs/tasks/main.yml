@@ -1,0 +1,3 @@
+---
+- include: components/nodejs.yml
+- include: components/npm-dependencies.yml
