@@ -1,0 +1,18 @@
+mysql_apt_modules:
+  - mysql-client
+  - mysql-server
+  - mysql-common
+  - python-mysqldb
+
+mysql_port: 3306
+mysql_root_pass: ~
+mysql_settings_only_local_connections: False
+mysql_settings_max_allowed_packet: 256M
+mysql_settings_enable_mysql_log: False
+mysql_settings_no_root_hosts:
+  - "%"
+  - "::1"
+  - "{{ ansible_hostname }}"
+  - localhost
+
+mysql_settings_host_connect: localhost

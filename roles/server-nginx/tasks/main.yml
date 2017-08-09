@@ -1,0 +1,28 @@
+---
+- name: "Install nginx"
+  apt: name=nginx update_cache=yes state=latest
+
+- name: "Uninstall Apache server"
+  apt: name=apache2 state=absent
+  notify:
+    - reload nginx
+
+- name: "Remove default virtual host"
+  file:
+    path=/etc/nginx/sites-enabled/default
+    state=absent
+  notify:
+    - reload nginx
+
+- name: "Copy nginx.conf to /etc/nginx/"
+  template:
+    src: nginx.conf.j2
+    dest: "/etc/nginx/nginx.conf"
+  notify:
+    - reload nginx
+
+#############################################
+##                                         ##
+## Virtual host is defined in project role ##
+##                                         ##
+#############################################

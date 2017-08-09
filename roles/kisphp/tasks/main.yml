@@ -1,0 +1,3 @@
+---
+- include: components/kisphp-aliases.yml
+- include: components/server-manager.yml

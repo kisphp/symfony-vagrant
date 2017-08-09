@@ -1,0 +1,14 @@
+---
+- name: "Kisphp Dotfiles"
+  get_url: url=https://raw.githubusercontent.com/kisphp/dotfiles/master/install.sh dest=/tmp/kisphp-install.sh mode=0755
+
+- name: "Install Kisphp Dotfiles"
+  shell: /tmp/kisphp-install.sh
+  become: true
+  become_user: "{{ user }}"
+  args:
+    chdir: /home/{{ user }}
+    executable: /bin/bash
+
+- name: "Remove kisphp-install script"
+  file: path=/tmp/kisphp-install.sh state=absent

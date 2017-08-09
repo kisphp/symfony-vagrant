@@ -1,0 +1,20 @@
+---
+- name: "Clone the server_manager repository"
+  git:
+    repo="https://github.com/kisphp/server-manager.git"
+    dest="/home/{{ user }}/server_manager"
+    clone=yes
+    update=no
+    accept_hostkey=yes
+  become: yes
+  become_user: "{{ user }}"
+  ignore_errors: True
+
+- name: "Run composer install for server_manager"
+  composer:
+    command: "install"
+    prefer_dist: "yes"
+    working_dir: "/home/{{ user }}/server_manager"
+  become: yes
+  become_user: "{{ user }}"
+  ignore_errors: True

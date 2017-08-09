@@ -1,0 +1,5 @@
+---
+- name: "Copy SSH login banner"
+  template:
+    src: motd.j2
+    dest: "/etc/motd"

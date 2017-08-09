@@ -1,0 +1,21 @@
+---
+- name: "Create site vhost for domains"
+  become: yes
+  become_method: "sudo"
+  template:
+    src="nginx/site.conf.j2"
+    dest="/etc/nginx/sites-available/{{ project_name }}"
+    owner=root
+    mode=0644
+
+- name: "Create vhost symlink"
+  file:
+    src="/etc/nginx/sites-available/{{ project_name }}"
+    dest="/etc/nginx/sites-enabled/{{ project_name }}"
+    state=link
+
+- name: "Restart Nginx"
+  service: name=nginx state=reloaded
+
+- name: "Reload FPM"
+  service: name=php7.0-fpm state=reloaded
