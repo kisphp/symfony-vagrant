@@ -36,10 +36,10 @@ class nginx {
 
   exec { 'check-web-directory-existance':
     command => '/bin/true',
-    onlyif => '/usr/bin/test ! -d /home/vagrant/server/web',
+    onlyif => '/usr/bin/test ! -d /home/ubuntu/server/web',
   }
 
-  file { '/home/vagrant/server/web/':
+  file { '/home/ubuntu/server/web/':
     ensure => 'directory',
     require => Exec['check-web-directory-existance'],
   }

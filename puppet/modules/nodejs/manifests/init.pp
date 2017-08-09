@@ -16,6 +16,11 @@ class nodejs {
     require => Package["nodejs"],
   }
 
+  exec { 'upgrade npm to version 5':
+    command => "/usr/bin/npm install npm@latest -g",
+    require => Package['nodejs'],
+  }
+
   exec { 'install-gulp':
     command => "/usr/bin/npm install -g gulp",
     require => Package['nodejs'],

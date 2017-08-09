@@ -3,14 +3,15 @@ exec { 'apt-get-update':
     path => '/usr/bin',
 }
 
-package { ['curl', 'tree', 'mc', 'make', 'wget', 'htop', 'build-essential', 'python', 'python-pip', 'zsh']:
-    ensure => present,
-    require => Exec['apt-get-update'],
-}
+# package { ['curl', 'tree', 'mc', 'make', 'wget', 'htop', 'build-essential', 'python', 'python-pip', 'zsh']:
+#     ensure => present,
+#     require => Exec['apt-get-update'],
+# }
 
-file { '/home/vagrant/server/':
-    ensure => 'directory',
-    require => Exec['apt-get-update'],
-}
+# file { '/home/vagrant/server/':
+#     ensure => 'directory',
+#     require => Exec['apt-get-update'],
+# }
 
-include vim, git, php, nginx, mysql, redis, nodejs, composer, ohmyzsh
+#include vim, git, php, nginx, mysql, redis, nodejs, composer, ohmyzsh
+# include vim

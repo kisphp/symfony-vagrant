@@ -1,13 +1,13 @@
 class php {
 
-  package { ['php5-fpm', 'php5-gd', 'php5-mysql', 'php5-cli', 'php-pear', 'php5-intl', 'php5-mcrypt', 'mcrypt', 'php5-imagick', 'imagemagick',
-    'php5-curl', 'php5-dev', 'php5-memcache', 'php5-memcached', 'php5-sqlite', 'memcached', 'phpunit']:
+  package { ['php70-fpm', 'php70-gd', 'php70-mysql', 'php70-cli', 'php-pear', 'php70-intl', 'php70-mcrypt', 'mcrypt', 'php70-imagick', 'imagemagick',
+    'php70-curl', 'php70-dev', 'php70-memcache', 'php70-memcached', 'php70-sqlite', 'memcached', 'phpunit']:
     ensure => present,
     require => Exec['apt-get-update'],
   }
 
-  service { 'php5-fpm':
+  service { 'php70-fpm':
     ensure => running,
-    require => Package['php5-fpm'],
+    require => Package['php70-fpm'],
   }
 }

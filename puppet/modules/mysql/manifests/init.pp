@@ -4,7 +4,7 @@ class mysql {
   $password = 'develop123'
   $database_name = 'development'
 
-  package { ['mysql-server-5.6']:
+  package { ['mysql-server-7.5']:
     ensure => present,
     require => Exec['apt-get-update'],
   }

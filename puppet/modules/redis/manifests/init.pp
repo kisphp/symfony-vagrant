@@ -1,6 +1,6 @@
 class redis {
 
-  package { ['redis-server', 'redis-tools', 'php5-redis']:
+  package { ['redis-server', 'redis-tools', 'php7-redis']:
     ensure => present,
     require => [
       Package['php5-fpm'],

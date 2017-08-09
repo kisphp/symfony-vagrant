@@ -2,16 +2,16 @@ class ohmyzsh {
 
   # Clone oh-my-zsh
   exec { 'clone-oh-my-zsh':
-    cwd     => "/home/vagrant",
+    cwd     => "/home/ubuntu",
     user    => "vagrant",
     path    => ['/bin', '/usr/bin'],
     command => "git clone https://github.com/robbyrussell/oh-my-zsh.git /home/vagrant/.oh-my-zsh",
-    creates => "/home/vagrant/.oh-my-zsh",
+    creates => "/home/ubuntu/.oh-my-zsh",
     require => [Package['git'], Package['zsh'], Package['curl']]
   }
 
   # Set configuration
-  file { "/home/vagrant/.zshrc":
+  file { "/home/ubuntu/.zshrc":
     ensure => file,
     owner => "vagrant",
     group => "vagrant",
@@ -21,7 +21,7 @@ class ohmyzsh {
   }
 
   # Set the shell
-  exec { "chsh -s /usr/bin/zsh vagrant":
+  exec { "chsh -s /usr/bin/zsh ubuntu":
     unless  => "grep -E '^vagrant.+:/usr/bin/zsh$' /etc/passwd",
     path    => ['/bin', '/usr/bin'],
     require => Package['zsh']
