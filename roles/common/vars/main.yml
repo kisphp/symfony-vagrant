@@ -1,0 +1,20 @@
+apt_general_tools:
+  - curl
+  - vim
+  - mc
+  - tree
+  - htop
+  - zip
+  - unzip
+  - build-essential
+  - mcrypt
+  - sudo
+
+python_apt_modules:
+  - python
+  - python-dev
+
+python_pip_modules:
+  - jinja2
+  - urllib3
+  - pyasn1

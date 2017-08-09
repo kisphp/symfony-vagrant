@@ -1,0 +1,3 @@
+---
+- include: components/python.yml
+- include: components/tools.yml
