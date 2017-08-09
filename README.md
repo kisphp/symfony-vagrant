@@ -68,52 +68,47 @@ DATABASE_NAME = development
 sudo apt-get install nfs-kernel-server
 ```
 
-
 ### Installed Packages in VM
 
 - build-essential
 - composer
-- curl - 7.35
-- git - 1.9.1
+- curl - 7.47
+- git - 2.7.4
 - htop
-- imagemagick - 6.7.7-10
 - mc
 - mcrypt
 - make
 - memcached
-- mysql - 5.6
-- nginx - 1.4.6
+- mysql - 5.7
+- nginx - 1.10.3
 - ohmyzsh
 - php - 7.0
-    - php5-fpm
-    - php5-gd
-    - php5-mysql
-    - php5-cli
-    - php5-dev
-    - php-pear
-    - php5-mcrypt
-    - php5-imagick
-    - php5-curl
-    - php5-memcache
-    - php5-memcached
-    - php5-sqlite
-- python - 2.7.6/3.4.3
-- redis - 2.8.4
+  - "php7.0-common"
+  - "php7.0-cli"
+  - "php7.0-curl"
+  - "php7.0-cgi"
+  - "php7.0-fpm"
+  - "php7.0-gd"
+  - "php7.0-intl"
+  - "php7.0-json"
+  - "php7.0-mysql"
+  - "php7.0-mcrypt"
+  - "php7.0-mbstring"
+  - "php7.0-sqlite3"
+  - "php7.0-xml"
+  - "php7.0-zip"
+  - "php-xdebug"
+- python - 2.7.12/3.5.2
 - tree
 - vim
 - wget
 
 ## Javascript related packages
 
-- Nodejs - 5.11.1
-- npm - 3.8.6
+- Nodejs - 6.11.2
+- npm - 5.0.4+
 - gulp - 3.9.1
-- bower - 1.7.9
-- webpack - 1.13.0
-
-## Redis
-
-> Redis requires no credentials to login
+- bower - 1.8.9
 
 
 ## Create swap
