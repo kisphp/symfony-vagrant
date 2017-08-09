@@ -1,0 +1,29 @@
+---
+- name: "Make sure .ssh directory exists"
+  file: path=/home/{{ user }}/.ssh state=directory mode=0700
+  become: yes
+  become_user: "{{ user }}"
+
+- name: "Register remote host"
+  shell: ssh-keyscan -H {{ item }} >> /home/{{ user }}/.ssh/known_hosts
+  become: yes
+  become_user: "{{ user }}"
+  with_items:
+    - github.com
+    - bitbucket.org
+    - gitlab.com
+
+#- name: "Copy id_rsa.pub file"
+#  copy: src=~/.ssh/id_rsa.pub dest=/home/{{ user }}/.ssh/id_rsa.pub owner={{ user }} group={{ user }} mode=0600
+#  become: yes
+#  become_user: "{{ user }}"
+#
+#- name: "Copy id_rsa file"
+#  copy: src=~/.ssh/id_rsa dest=/home/{{ user }}/.ssh/id_rsa owner={{ user }} group={{ user }} mode=0600
+#  become: yes
+#  become_user: "{{ user }}"
+
+#- name: "Allow SSH Login without password to current user"
+#  authorized_key: user={{ user }} key="{{ lookup('file', lookup('env', 'HOME') + '/.ssh/id_rsa.pub') }}"
+#  become: yes
+#  become_user: "{{ user }}"
