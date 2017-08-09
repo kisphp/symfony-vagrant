@@ -11,17 +11,17 @@
       apt: update_cache=yes
 
   roles:
-#    - { role: common }
-#    - { role: git }
-#    - { role: banner }
-#    - { role: ntp-timezone }
-#    - { role: ssh }
-#    - { role: oh-my-zsh }
+    - { role: common }
+    - { role: git }
+    - { role: banner }
+    - { role: ntp-timezone }
+    - { role: ssh }
+    - { role: oh-my-zsh }
     - { role: nodejs }
-#    - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
-#    - { role: php }
-    #- { role: kisphp }
+    - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
+    - { role: php }
+    - { role: kisphp }
     #- { role: redis }
-#    - { role: mysql }
-#    - { role: project }
+    - { role: mysql }
+    - { role: project }
     #- { role: fail2ban }
