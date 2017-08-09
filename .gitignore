@@ -1,2 +1,4 @@
 .vagrant/
 .idea/
+_devops/
+*.log

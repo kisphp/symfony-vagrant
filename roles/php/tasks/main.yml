@@ -1,0 +1,4 @@
+---
+- include: components/php.yml
+- include: components/composer.yml
+- include: components/xdebug.yml

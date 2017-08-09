@@ -1,0 +1,51 @@
+---
+- name: "Generate xdebug.ini"
+  template:
+    src: xdebug.ini.j2
+    dest: "/etc/php/{{ php_version }}/mods-available/xdebug.ini"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  when: php_xdebug_enabled == True
+
+- name: "Enable Apache XDEBUG"
+  file:
+    src="/etc/php/{{ php_version }}/mods-available/xdebug.ini"
+    dest="/etc/php/{{ php_version }}/apache2/conf.d/20-xdebug.ini"
+    owner=root
+    group=root
+    state=link
+  when: php_xdebug_enabled == True and webserver_name == 'apache2'
+  ignore_errors: true
+
+- name: "Enable CLI XDEBUG"
+  file:
+    src="/etc/php/{{ php_version }}/mods-available/xdebug.ini"
+    dest="/etc/php/{{ php_version }}/cli/conf.d/20-xdebug.ini"
+    owner=root
+    group=root
+    state=link
+  when: php_xdebug_enabled == True
+  ignore_errors: true
+
+- name: "Enable FPM XDEBUG"
+  file:
+    src="/etc/php/{{ php_version }}/mods-available/xdebug.ini"
+    dest="/etc/php/{{ php_version }}/fpm/conf.d/20-xdebug.ini"
+    owner=root
+    group=root
+    state=link
+  when: php_xdebug_enabled == True
+  ignore_errors: true
+
+- name: "Disable Apache Xdebug"
+  file: path="/etc/php/{{ php_version }}/apache2/conf.d/20-xdebug.ini" state=absent
+  when: php_xdebug_enabled != True
+
+- name: "Disable CLI Xdebug"
+  file: path="/etc/php/{{ php_version }}/cli/conf.d/20-xdebug.ini" state=absent
+  when: php_xdebug_enabled != True
+
+- name: "Disable FPM Xdebug"
+  file: path="/etc/php/{{ php_version }}/fpm/conf.d/20-xdebug.ini" state=absent
+  when: php_xdebug_enabled != True

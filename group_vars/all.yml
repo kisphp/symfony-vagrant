@@ -9,3 +9,11 @@ user_password: "$6$hWE5LONZw3V8gG$/1pzSCh0m7njjrmrFm5S6sCp6I//Hy3MOuvuo39aC7YU3x
 # mkpasswd password_here --method=sha-512
 
 env_type: dev
+
+webserver_name: none # apache2, nginx, none
+
+php_xdebug_enabled: 1
+php_xdebug_remote_enable: 1
+php_xdebug_remote_autostart: 1
+php_xdebug_profiler_enable: 1
+php_xdebug_remote_connect_back: 1

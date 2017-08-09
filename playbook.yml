@@ -16,11 +16,11 @@
 #    - { role: git }
 #    - { role: banner }
     #- { role: ntp-timezone }
-    - { role: ssh }
+#    - { role: ssh }
 #    - { role: oh-my-zsh }
     #- { role: nodejs }
     #- { role: "{{ webserver_name }}" }
-    #- { role: php }
+    - { role: php }
     #- { role: composer }
     #- { role: kisphp }
     #- { role: redis }
