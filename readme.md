@@ -2,7 +2,7 @@
 
 - Mac OS X or Ubuntu Desktop
 - Vagrant 1.7.2
-- VirtualBox >= 4.3.30
+- VirtualBox >= 5+
 
 ## Installation
 
@@ -84,7 +84,7 @@ sudo apt-get install nfs-kernel-server
 - mysql - 5.6
 - nginx - 1.4.6
 - ohmyzsh
-- php - 5.5.9
+- php - 7.0
     - php5-fpm
     - php5-gd
     - php5-mysql
