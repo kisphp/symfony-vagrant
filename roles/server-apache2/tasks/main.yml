@@ -1,0 +1,36 @@
+---
+- name: "Install apache packages"
+  apt: name={{ item }} update_cache=yes state=present
+  with_items: "{{ apache2_apt_modules }}"
+
+- name: "Install apache packages for php 7.0"
+  apt: name={{ item }} update_cache=yes state=present
+  with_items: "{{ apache2_apt_modules }}"
+
+- name: "Setup Apache modules"
+  apache2_module: name={{ item }} state=present
+  with_items: "{{ apache2_modules }}"
+
+#- name: "Remove Apache php 5 module"
+#  apache2_module: name=php5 state=absent
+
+#- name: "Activate Apache php 7.0 module"
+#  apache2_module: name=php7.0 state=present
+#  notify: "reload apache"
+
+- name: "Copy apache2.conf to /etc/apache2/"
+  template:
+    src: apache2.conf.j2
+    dest: "/etc/apache2/apache2.conf"
+
+- name: "Copy apache envvars"
+  template:
+    src: envvars.j2
+    dest: "/etc/apache2/envvars"
+
+- name: "Remove default virtual host"
+  file:
+    path=/etc/apache2/sites-enabled/000-default.conf
+    state=absent
+  notify:
+    - reload apache

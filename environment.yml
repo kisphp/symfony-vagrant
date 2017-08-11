@@ -1,5 +1,6 @@
 ---
 server_path: /home/server
+server_public_dir: web
 server_timezone: Europe/Berlin
 
 project_name: dev.local

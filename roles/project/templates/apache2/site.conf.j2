@@ -1,15 +1,15 @@
 <VirtualHost *:{{ apache_port }}>
-    ServerAdmin webmaster@localhost
+    ServerAdmin webmaster@{{ webserver_name }}
 
     ServerName {{ webserver_name }}
     ServerAlias www.{{ webserver_name }}
 
-    DocumentRoot {{ server_path }}/web
+    DocumentRoot {{ server_path }}/{{ server_public_dir }}
     <Directory />
         Options FollowSymLinks
         AllowOverride All
     </Directory>
-    <Directory {{ server_path }}/web/>
+    <Directory {{ server_path }}/{{ server_public_dir }}/>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
         Order allow,deny

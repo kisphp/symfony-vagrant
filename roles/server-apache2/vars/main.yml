@@ -1,0 +1,15 @@
+apache2_apt_modules:
+  - apache2
+  - apache2-utils
+  - libapache2-mod-php7.0
+#  - apache2-doc
+#  - libapache2-mod-fcgid
+
+apache2_modules:
+  - rewrite
+#  - proxy
+#  - proxy_http
+  - headers
+#  - actions
+  - alias
+#  - ssl
