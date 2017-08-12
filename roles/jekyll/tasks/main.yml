@@ -1,0 +1,6 @@
+---
+- name: "Build site docs"
+  command: /usr/bin/jekyll build
+  args:
+    chdir: "{{ server_path }}"
+    creates: "{{ server_path }}/_site/"

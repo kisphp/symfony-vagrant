@@ -9,6 +9,7 @@ apt_general_tools:
   - build-essential
   - mcrypt
   - sudo
+  - jekyll
 
 python_apt_modules:
   - python

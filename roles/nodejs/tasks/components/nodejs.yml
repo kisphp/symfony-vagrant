@@ -24,9 +24,18 @@
 - name: Ensure Node.js and npm are installed.
   apt: "name=nodejs={{ nodejs_version|regex_replace('x', '') }}* state=present"
 
+#- name: "Create node symlink"
+#  become: yes
+#  become_method: "sudo"
+#  file:
+#    src="/usr/bin/nodejs"
+#    dest="/usr/bin/node"
+#    state=link
+
 - name: "Upgrade npm to version 5"
   npm:
     name: npm
     global: yes
     state: present
     version: '~5.0'
+  ignore_errors: true
