@@ -14,6 +14,18 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: VM_IP
     config.vm.network :forwarded_port, guest: 22, host: SSH_PORT, id: 'ssh'
 
+    # upload ssh id_rsa file
+    config.vm.provision :file do |file|
+      file.source = "~/.ssh/id_rsa"
+      file.destination = "~/.ssh/id_rsa"
+    end
+
+    # upload ssh id_rsa.pub file
+    config.vm.provision :file do |file|
+      file.source = "~/.ssh/id_rsa.pub"
+      file.destination = "~/.ssh/id_rsa.pub"
+    end
+
     config.vm.provision "ansible_local" do |ans|
         ans.playbook = "playbook.yml"
         ans.install_mode = "pip_args_only"

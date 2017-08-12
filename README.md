@@ -26,13 +26,13 @@ vagrant up
 vagrant ssh
 
 # go to project directory
-cd server
+cd ../server
 
 # add vagrant repository to ignore list in your project
 echo "_vm/" >> .gitignore 
 
 # install dependencies
-composer update
+composer install
 
 ```
 

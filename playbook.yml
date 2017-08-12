@@ -24,4 +24,5 @@
     #- { role: redis }
     - { role: mysql }
     - { role: project }
+    #- { role: jekyll }
     #- { role: fail2ban }
