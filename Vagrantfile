@@ -6,7 +6,6 @@ SSH_PORT = 10080
 
 Vagrant.configure("2") do |config|
     config.vm.box = "ubuntu/xenial64"
-    #config.vm.box_version = "1.0.1"
     config.vm.hostname = VM_NAME
     config.vm.synced_folder "../", "/home/server", type: SYNC_TYPE, create: true
     config.nfs.map_uid = Process.uid
@@ -33,7 +32,7 @@ Vagrant.configure("2") do |config|
     end
 
     config.vm.provider :virtualbox do |vb|
-        vb.name = VM_NAME
+        #vb.name = VM_NAME
         vb.customize([
             "modifyvm", :id,
             "--memory", VM_RAM,
