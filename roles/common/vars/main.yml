@@ -2,6 +2,7 @@ apt_general_tools:
   - curl
   - vim
   - mc
+  - bc
   - tree
   - htop
   - zip
