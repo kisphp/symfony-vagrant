@@ -21,7 +21,7 @@
     - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
     - { role: kisphp }
-    #- { role: redis }
+    - { role: redis }
     - { role: mysql }
     - { role: project }
     #- { role: jekyll }
