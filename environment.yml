@@ -5,6 +5,8 @@ server_timezone: Europe/Berlin
 
 project_name: dev.local
 
+php7_version: "7.1"
+
 user: ubuntu
 # Password: vagrant
 user_password: "$6$hWE5LONZw3V8gG$/1pzSCh0m7njjrmrFm5S6sCp6I//Hy3MOuvuo39aC7YU3xi1hULiSGax/3eBqZ9nO6dTqxGRU.lhqg/oFKh/x0"

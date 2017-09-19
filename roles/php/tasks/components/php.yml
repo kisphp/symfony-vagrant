@@ -1,22 +1,7 @@
 ---
-#- name: "Add debian dotdeb packages"
-#  apt_repository:
-#    repo: deb http://packages.dotdeb.org jessie all
-#    state: present
-
-#- name: "Add debian dotdeb src packages"
-#  apt_repository:
-#    repo: deb-src http://packages.dotdeb.org jessie all
-#    state: present
-
-#- name: "Add apt key for Debian"
-#  apt_key:
-#    url: https://www.dotdeb.org/dotdeb.gpg
-#    state: present
-
-#- name: "Update apt"
-#  apt:
-#    update_cache: yes
+- name: "Add repository for Ubuntu"
+  become: true
+  apt_repository: repo={{ php_ppa }}
 
 - name: "Install PHP 7 packages"
   apt: name={{ item }} update_cache=yes state=latest
@@ -24,34 +9,35 @@
 
 - name: "Generate PHP FPM pool.d config"
   template:
-    src: "pool.d/www.conf.j2"
-    dest: "/etc/php/{{ php_version }}/fpm/pool.d/www.conf"
+    src: "php7/fpm/pool.d/www.conf.j2"
+    dest: "/etc/php/{{ php7_version }}/fpm/pool.d/www.conf"
     owner: "root"
     group: "root"
     mode: 0644
-    force: yes
 
 - name: "Generate FPM PHP ini"
   template:
-    src: "php.ini.j2"
-    dest: "/etc/php/{{ php_version }}/fpm/php.ini"
+    src: "php7/php.ini.j2"
+    dest: "/etc/php/{{ php7_version }}/fpm/php.ini"
     owner: "root"
     group: "root"
     mode: 0644
-    force: yes
+  vars:
+    config: "{{ php_ini.fpm }}"
 
 - name: "Generate CLI PHP ini"
   template:
-    src: "php.ini.j2"
-    dest: "/etc/php/{{ php_version }}/cli/php.ini"
+    src: "php7/php.ini.j2"
+    dest: "/etc/php/{{ php7_version }}/cli/php.ini"
     owner: "root"
     group: "root"
     mode: 0644
-    force: yes
+  vars:
+    config: "{{ php_ini.cli }}"
 
 - name: "Make sure the socket file has the correct rights"
   file:
-    path: "/var/run/php/php{{ php_version }}-fpm.sock"
+    path: "/var/run/php/php{{ php7_version }}-fpm.sock"
     owner: "root"
     group: "root"
     mode: "o+rw"
@@ -65,3 +51,7 @@
   become: yes
   become_method: "sudo"
   when: webserver_name == "nginx"
+
+- name: "Install apache packages for php 7"
+  apt: name=libapache2-mod-php7.1 update_cache=yes state=present
+  when: webserver_name == "apache2"

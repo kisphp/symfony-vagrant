@@ -199,7 +199,7 @@ engine = On
 ; Development Value: Off
 ; Production Value: Off
 ; http://php.net/short-open-tag
-short_open_tag = {{ php_ini.fpm.short_open_tag | default('Off') }}
+short_open_tag = {{ config.short_open_tag | default('Off') }}
 
 ; The number of significant digits displayed in floating point numbers.
 ; http://php.net/precision
@@ -296,7 +296,7 @@ serialize_precision = 17
 ; This directive allows you to disable certain functions for security reasons.
 ; It receives a comma-delimited list of function names.
 ; http://php.net/disable-functions
-disable_functions = {{ php_ini.fpm.disable_functions | default('') }}
+disable_functions =
 
 ; This directive allows you to disable certain classes for security reasons.
 ; It receives a comma-delimited list of class names.
@@ -356,7 +356,7 @@ zend.enable_gc = On
 ; threat in any way, but it makes it possible to determine whether you use PHP
 ; on your server or not.
 ; http://php.net/expose-php
-expose_php = {{ php_ini.fpm.expose_php | default('On') }}
+expose_php = On
 
 ;;;;;;;;;;;;;;;;;;;
 ; Resource Limits ;
@@ -365,7 +365,7 @@ expose_php = {{ php_ini.fpm.expose_php | default('On') }}
 ; Maximum execution time of each script, in seconds
 ; http://php.net/max-execution-time
 ; Note: This directive is hardcoded to 0 for the CLI SAPI
-max_execution_time = {{ php_ini.fpm.max_execution_time | default(30) }}
+max_execution_time = {{ config.max_execution_time | default(30) }}
 
 ; Maximum amount of time each script may spend parsing request data. It's a good
 ; idea to limit this time on productions servers in order to eliminate unexpectedly
@@ -375,7 +375,7 @@ max_execution_time = {{ php_ini.fpm.max_execution_time | default(30) }}
 ; Development Value: 60 (60 seconds)
 ; Production Value: 60 (60 seconds)
 ; http://php.net/max-input-time
-max_input_time = {{ php_ini.fpm.max_input_time | default(60) }}
+max_input_time = {{ config.max_input_time | default(60) }}
 
 ; Maximum input variable nesting level
 ; http://php.net/max-input-nesting-level
@@ -386,7 +386,7 @@ max_input_time = {{ php_ini.fpm.max_input_time | default(60) }}
 
 ; Maximum amount of memory a script may consume (128MB)
 ; http://php.net/memory-limit
-memory_limit = {{ php_ini.fpm.memory_limit | default(-1) }}
+memory_limit = {{ config.memory_limit | default(-1) }}
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; Error handling and logging ;
@@ -442,7 +442,7 @@ memory_limit = {{ php_ini.fpm.memory_limit | default(-1) }}
 ; Development Value: E_ALL
 ; Production Value: E_ALL & ~E_DEPRECATED & ~E_STRICT
 ; http://php.net/error-reporting
-error_reporting = {{ php_ini.fpm.error_reporting | default('E_ALL & ~E_DEPRECATED & ~E_STRICT') }}
+error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT
 
 ; This directive controls whether or not and where PHP will output errors,
 ; notices and warnings too. Error output is very useful during development, but
@@ -459,7 +459,7 @@ error_reporting = {{ php_ini.fpm.error_reporting | default('E_ALL & ~E_DEPRECATE
 ; Development Value: On
 ; Production Value: Off
 ; http://php.net/display-errors
-display_errors = {{ php_ini.fpm.display_errors | default('Off') }}
+display_errors = {{ config.display_errors | default('Off') }}
 
 ; The display of errors which occur during PHP's startup sequence are handled
 ; separately from display_errors. PHP's default behavior is to suppress those
@@ -653,7 +653,7 @@ auto_globals_jit = On
 ; Its value may be 0 to disable the limit. It is ignored if POST data reading
 ; is disabled through enable_post_data_reading.
 ; http://php.net/post-max-size
-post_max_size = {{ php_ini.fpm.post_max_size | default('8M') }}
+post_max_size = {{ config.post_max_size | default('8M') }}
 
 ; Automatically add files before PHP document.
 ; http://php.net/auto-prepend-file
@@ -806,10 +806,10 @@ file_uploads = On
 
 ; Maximum allowed size for uploaded files.
 ; http://php.net/upload-max-filesize
-upload_max_filesize = {{ php_ini.fpm.upload_max_filesize | default('2M') }}
+upload_max_filesize = {{ config.upload_max_filesize | default('2M') }}
 
 ; Maximum number of files that can be uploaded via a single request
-max_file_uploads = {{ php_ini.fpm.max_file_uploads | default('2M') }}
+max_file_uploads = {{ config.max_file_uploads | default('20') }}
 
 ;;;;;;;;;;;;;;;;;;
 ; Fopen wrappers ;
@@ -817,11 +817,11 @@ max_file_uploads = {{ php_ini.fpm.max_file_uploads | default('2M') }}
 
 ; Whether to allow the treatment of URLs (like http:// or ftp://) as files.
 ; http://php.net/allow-url-fopen
-allow_url_fopen = {{ php_ini.fpm.allow_url_fopen | default('2M') }}
+allow_url_fopen = {{ config.allow_url_fopen | default('On') }}
 
 ; Whether to allow include/require to open URLs (like http:// or ftp://) as files.
 ; http://php.net/allow-url-include
-allow_url_include = {{ php_ini.fpm.allow_url_include | default('2M') }}
+allow_url_include = {{ config.allow_url_include | default('Off') }}
 
 ; Define the anonymous ftp password (your email address). PHP's default setting
 ; for this is empty.

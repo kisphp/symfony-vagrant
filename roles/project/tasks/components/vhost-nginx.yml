@@ -18,4 +18,4 @@
   service: name=nginx state=reloaded
 
 - name: "Reload FPM"
-  service: name=php7.0-fpm state=reloaded
+  service: name=php{{ php7_version }}-fpm state=reloaded
