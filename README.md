@@ -79,7 +79,7 @@ sudo apt-get install nfs-kernel-server
 - mcrypt
 - make
 - memcached
-- mysql - 5.7
+- mysql - 5.7.19
 - nginx - 1.10.3
 - ohmyzsh
 - php - 7.1
@@ -105,10 +105,9 @@ sudo apt-get install nfs-kernel-server
 
 ## Javascript related packages
 
-- Nodejs - 6.11.2
-- npm - 5.4.2
+- Nodejs - 6.11.3
+- npm - 5.0.4
 - gulp - 3.9.1
-- bower - 1.8.9
 
 
 ## Create swap
