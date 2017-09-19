@@ -51,3 +51,7 @@
   become: yes
   become_method: "sudo"
   when: webserver_name == "nginx"
+
+- name: "Install apache packages for php 7"
+  apt: name=libapache2-mod-php7.1 update_cache=yes state=present
+  when: webserver_name == "apache2"

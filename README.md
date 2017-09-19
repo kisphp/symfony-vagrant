@@ -82,21 +82,21 @@ sudo apt-get install nfs-kernel-server
 - mysql - 5.7
 - nginx - 1.10.3
 - ohmyzsh
-- php - 7.0
-  - "php7.0-common"
-  - "php7.0-cli"
-  - "php7.0-curl"
-  - "php7.0-cgi"
-  - "php7.0-fpm"
-  - "php7.0-gd"
-  - "php7.0-intl"
-  - "php7.0-json"
-  - "php7.0-mysql"
-  - "php7.0-mcrypt"
-  - "php7.0-mbstring"
-  - "php7.0-sqlite3"
-  - "php7.0-xml"
-  - "php7.0-zip"
+- php - 7.1
+  - "php7.1-common"
+  - "php7.1-cli"
+  - "php7.1-curl"
+  - "php7.1-cgi"
+  - "php7.1-fpm"
+  - "php7.1-gd"
+  - "php7.1-intl"
+  - "php7.1-json"
+  - "php7.1-mysql"
+  - "php7.1-mcrypt"
+  - "php7.1-mbstring"
+  - "php7.1-sqlite3"
+  - "php7.1-xml"
+  - "php7.1-zip"
   - "php-xdebug"
 - python - 2.7.12/3.5.2
 - tree
@@ -106,7 +106,7 @@ sudo apt-get install nfs-kernel-server
 ## Javascript related packages
 
 - Nodejs - 6.11.2
-- npm - 5.0.4+
+- npm - 5.4.2
 - gulp - 3.9.1
 - bower - 1.8.9
 
