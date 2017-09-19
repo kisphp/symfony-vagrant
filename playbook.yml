@@ -18,7 +18,7 @@
     - { role: ssh }
     - { role: oh-my-zsh }
     - { role: nodejs }
-#    - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
+    - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
     - { role: composer }
     - { role: kisphp }

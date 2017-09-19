@@ -17,11 +17,23 @@
 
 - name: "Generate FPM PHP ini"
   template:
-    src: "php7/fpm/php.ini.j2"
-    dest: "/etc/php/{{ php7_version }}/php.ini"
+    src: "php7/php.ini.j2"
+    dest: "/etc/php/{{ php7_version }}/fpm/php.ini"
     owner: "root"
     group: "root"
     mode: 0644
+  vars:
+    config: "{{ php_ini.fpm }}"
+
+- name: "Generate CLI PHP ini"
+  template:
+    src: "php7/php.ini.j2"
+    dest: "/etc/php/{{ php7_version }}/cli/php.ini"
+    owner: "root"
+    group: "root"
+    mode: 0644
+  vars:
+    config: "{{ php_ini.cli }}"
 
 - name: "Make sure the socket file has the correct rights"
   file:

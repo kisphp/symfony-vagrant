@@ -16,26 +16,26 @@ php_apt_modules:
   - php{{ php7_version }}-mbstring
   - php-xdebug
 
-php_ini_fpm_short_open_tag: Off
-php_ini_fpm_asp_tags: Off
-php_ini_fpm_max_execution_time: 30
-php_ini_fpm_max_input_time: 30
-php_ini_fpm_memory_limit: 128M
-php_ini_fpm_display_errors: Off
-php_ini_fpm_post_max_size: 8M
-php_ini_fpm_upload_max_filesize: 100M
-php_ini_fpm_max_file_uploads: 10
-php_ini_fpm_allow_url_fopen: Off
-php_ini_fpm_allow_url_include: Off
-
-php_ini_cli_short_open_tag: Off
-php_ini_cli_asp_tags: Off
-php_ini_cli_max_execution_time: 30
-php_ini_cli_max_input_time: 30
-php_ini_cli_memory_limit: -1
-php_ini_cli_display_errors: Off
-php_ini_cli_post_max_size: 8M
-php_ini_cli_upload_max_filesize: 2M
-php_ini_cli_max_file_uploads: 20
-php_ini_cli_allow_url_fopen: On
-php_ini_cli_allow_url_include: Off
+php_ini:
+  fpm:
+    short_open_tag: Off
+    max_execution_time: 30
+    max_input_time: 30
+    memory_limit: 128M
+    display_errors: Off
+    post_max_size: 8M
+    upload_max_filesize: 100M
+    max_file_uploads: 10
+    allow_url_fopen: Off
+    allow_url_include: Off
+  cli:
+    short_open_tag: Off
+    max_execution_time: 30
+    max_input_time: 30
+    memory_limit: -1
+    display_errors: Off
+    post_max_size: 8M
+    upload_max_filesize: 2M
+    max_file_uploads: 10
+    allow_url_fopen: Off
+    allow_url_include: Off
