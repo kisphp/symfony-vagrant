@@ -1,52 +1,41 @@
-php_version: "7.0"
-php7_fpm_service_name: "php{{ php_version }}-fpm"
+php7_fpm_service_name: "php{{ php7_version }}-fpm"
+
+php_ppa: "ppa:ondrej/php"
 
 php_apt_modules:
-  - "php{{ php_version }}-common"
-  - "php{{ php_version }}-cli"
-  - "php{{ php_version }}-curl"
-  - "php{{ php_version }}-cgi"
-  - "php{{ php_version }}-fpm"
-  - "php{{ php_version }}-gd"
-  - "php{{ php_version }}-intl"
-  - "php{{ php_version }}-json"
-  - "php{{ php_version }}-mysql"
-  - "php{{ php_version }}-mcrypt"
-  - "php{{ php_version }}-mbstring"
-  - "php{{ php_version }}-sqlite3"
-  - "php{{ php_version }}-xml"
-  - "php{{ php_version }}-zip"
-  - "php-xdebug"
+  - php{{ php7_version }}-common
+  - php{{ php7_version }}-cli
+  - php{{ php7_version }}-intl
+  - php{{ php7_version }}-curl
+  - php{{ php7_version }}-cgi
+  - php{{ php7_version }}-fpm
+  - php{{ php7_version }}-mysql
+  - php{{ php7_version }}-gd
+  - php{{ php7_version }}-xml
+  - php{{ php7_version }}-mcrypt
+  - php{{ php7_version }}-mbstring
+  - php-xdebug
 
-php_ini: {
-  fpm: {
-    error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT",
-    display_errors: Off,
-    expose_php: On,
-    short_open_tag: Off,
-    max_execution_time: 60,
-    max_input_time: 60,
-    memory_limit: 512M,
-    post_max_size: 100M,
-    upload_max_filesize: 2M,
-    max_file_uploads: 20,
-    allow_url_fopen: On,
-    allow_url_include: Off,
-    disable_functions: 'pcntl_alarm,pcntl_fork,pcntl_waitpid,pcntl_wait,pcntl_wifexited,pcntl_wifstopped,pcntl_wifsignaled,pcntl_wifcontinued,pcntl_wexitstatus,pcntl_wtermsig,pcntl_wstopsig,pcntl_signal,pcntl_signal_dispatch,pcntl_get_last_error,pcntl_strerror,pcntl_sigprocmask,pcntl_sigwaitinfo,pcntl_sigtimedwait,pcntl_exec,pcntl_getpriority,pcntl_setpriority,',
-  },
-  cli: {
-    error_reporting: "E_ALL & ~E_DEPRECATED & ~E_STRICT",
-    display_errors: Off,
-    expose_php: On,
-    short_open_tag: Off,
-    max_execution_time: 60,
-    max_input_time: 60,
-    memory_limit: -1,
-    post_max_size: 8M,
-    upload_max_filesize: 2M,
-    max_file_uploads: 20,
-    allow_url_fopen: On,
-    allow_url_include: Off,
-    disable_functions: '',
-  }
-}
+php_ini_fpm_short_open_tag: Off
+php_ini_fpm_asp_tags: Off
+php_ini_fpm_max_execution_time: 30
+php_ini_fpm_max_input_time: 30
+php_ini_fpm_memory_limit: 128M
+php_ini_fpm_display_errors: Off
+php_ini_fpm_post_max_size: 8M
+php_ini_fpm_upload_max_filesize: 100M
+php_ini_fpm_max_file_uploads: 10
+php_ini_fpm_allow_url_fopen: Off
+php_ini_fpm_allow_url_include: Off
+
+php_ini_cli_short_open_tag: Off
+php_ini_cli_asp_tags: Off
+php_ini_cli_max_execution_time: 30
+php_ini_cli_max_input_time: 30
+php_ini_cli_memory_limit: -1
+php_ini_cli_display_errors: Off
+php_ini_cli_post_max_size: 8M
+php_ini_cli_upload_max_filesize: 2M
+php_ini_cli_max_file_uploads: 20
+php_ini_cli_allow_url_fopen: On
+php_ini_cli_allow_url_include: Off

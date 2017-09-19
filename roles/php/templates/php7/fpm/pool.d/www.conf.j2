@@ -1,7 +1,7 @@
 [www]
 user = {{ user }}
 group = {{ user }}
-listen = /run/php/php{{ php_version }}-fpm.sock
+listen = /run/php/php{{ php7_version }}-fpm.sock
 listen.owner = {{ user }}
 listen.group = {{ user }}
 pm = dynamic
