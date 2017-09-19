@@ -49,3 +49,9 @@ elasticsearch_network_host: 0.0.0.0
 elasticsearch_http_port: 9200
 elasticsearch_script_inline: true
 elasticsearch_script_indexed: true
+
+
+kibana_version: "4.6"
+kibana_server_port: 5601
+kibana_server_host: "0.0.0.0"
+kibana_elasticsearch_url: "http://10.10.0.80:9200"
