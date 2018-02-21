@@ -16,12 +16,12 @@
     - { role: banner }
     - { role: ntp-timezone }
     - { role: ssh }
+    - { role: crons }
     - { role: oh-my-zsh }
-    - { role: nodejs }
     - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
-    - { role: crons }
     - { role: composer }
+    - { role: nodejs }
     - { role: kisphp }
     - { role: mysql }
     - { role: project }

@@ -32,11 +32,37 @@ cd ../server
 echo "_vm/" >> .gitignore 
 
 # install dependencies
-composer install
+composer install --no-interaction
 
 ```
 
-> Composer will require interaction to build `parameters.yml` file.
+## Control ansible setup
+
+You can list all ansible TASKS
+```bash
+./run-ansible.sh --list-tasks
+```
+
+You can list all ansible TAGS
+```bash
+./run-ansible.sh --list-tags
+```
+
+You can run individual tags. For example if you add a new mysql user just run
+```bash
+./run-ansible.sh --tags mysql-users
+```
+
+If you update php settings run:
+```bash
+./run-ansible.sh --tags php
+```
+
+You also can run multiple tags at once
+```bash
+./run-ansible.sh --tags php,xdebug
+```
+
 
 ## Use multiple VMs
 
