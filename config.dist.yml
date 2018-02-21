@@ -36,10 +36,10 @@ mysql_databases:
   }
   - {
     host: '%',
-    user: demo,
-    pass: demo,
-    name: demo,
-    grant: demo # limit connection to only it's own database
+    user: kisphp,
+    pass: kisphp,
+    name: kisphp,
+    grant: kisphp # limit connection to only it's own database
   }
 
 mysql_settings_only_local_connections: False
