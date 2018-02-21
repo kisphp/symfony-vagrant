@@ -1,3 +1,8 @@
 ---
 - include_tasks: components/python.yml
+  tags:
+    - python
+
 - include_tasks: components/tools.yml
+  tags:
+    - apt

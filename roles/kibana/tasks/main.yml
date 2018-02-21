@@ -1,21 +1,29 @@
 ---
 - name: "Ensure dependency is installed"
   apt: name=apt-transport-https state=present
+  tags:
+    - kibana
 
 - name: Add Kibana repository.
   apt_repository:
     repo: 'deb https://packages.elastic.co/kibana/{{ kibana_version }}/debian stable main'
     state: present
     update_cache: yes
+  tags:
+    - kibana
 
 - name: Install Kibana.
   package: name=kibana state=present
+  tags:
+    - kibana
 
 - name: Ensure Kibana is started and enabled at boot.
   service:
     name: kibana
     state: started
     enabled: yes
+  tags:
+    - kibana
 
 - name: Copy Kibana configuration.
   template:
@@ -25,3 +33,5 @@
     group: root
     mode: 0644
   notify: restart kibana
+  tags:
+    - kibana

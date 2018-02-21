@@ -9,6 +9,8 @@
   become: yes
   become_user: "{{ user }}"
   ignore_errors: True
+  tags:
+    - kisphp
 
 - name: "Run composer install for server_manager"
   composer:
@@ -18,3 +20,5 @@
   become: yes
   become_user: "{{ user }}"
   ignore_errors: True
+  tags:
+    - kisphp

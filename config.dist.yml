@@ -27,9 +27,26 @@ php_xdebug_remote_autostart: 1
 php_xdebug_profiler_enable: 1
 php_xdebug_remote_connect_back: 1
 
-mysql_db_user: developer
-mysql_db_pass: develop123
-mysql_db_name: development
+mysql_databases:
+  - {
+    host: '%',
+    user: developer,
+    pass: develop123,
+    name: development,
+  }
+  - {
+    host: '%',
+    user: demo,
+    pass: demo,
+    name: demo,
+    grant: demo # limit connection to only it's own database
+  }
+
+mysql_settings_only_local_connections: False
+mysql_settings_max_allowed_packet: 512M
+mysql_settings_host_connect: "%"
+mysql_enable_mysql_log: False
+mysql_old_compatibility: True
 
 ## NodeJS
 ## Pin-Priority of NodeSource repository

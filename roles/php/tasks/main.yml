@@ -1,3 +1,8 @@
 ---
 - include_tasks: components/php.yml
+  tags:
+    - php
 - include_tasks: components/xdebug.yml
+  tags:
+    - php
+    - xdebug

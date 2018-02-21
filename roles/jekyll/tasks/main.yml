@@ -4,3 +4,5 @@
   args:
     chdir: "{{ server_path }}"
     creates: "{{ server_path }}/_site/"
+  tags:
+    - jekyll

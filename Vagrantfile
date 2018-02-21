@@ -17,7 +17,7 @@ Vagrant.configure("2") do |config|
 
     config.vbguest.auto_update = false
 
-    config.ssh.insert_key = true
+    #config.ssh.insert_key = true
     config.ssh.username = 'ubuntu'
 
     gen = IniFileGenerator.new(VM_IP)

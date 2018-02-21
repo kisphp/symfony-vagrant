@@ -1,3 +1,7 @@
 ---
 - include_tasks: components/kisphp-aliases.yml
+  tags:
+    - kisphp
 - include_tasks: components/server-manager.yml
+  tags:
+    - kisphp
