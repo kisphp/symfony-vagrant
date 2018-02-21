@@ -1,2 +1,3 @@
 npm_dependencies:
   - gulp
+  - yarn

@@ -13,6 +13,11 @@ Vagrant.configure("2") do |config|
     config.vm.network :private_network, ip: VM_IP
     config.vm.network :forwarded_port, guest: 22, host: SSH_PORT, id: 'ssh'
 
+    config.vbguest.auto_update = false
+
+    config.ssh.insert_key = true
+    config.ssh.username = 'ubuntu'
+
     # upload ssh id_rsa file
     config.vm.provision :file do |file|
       file.source = "~/.ssh/id_rsa"

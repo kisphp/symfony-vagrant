@@ -1,7 +1,7 @@
 ## Requirements
 
 - Mac OS X or Ubuntu Desktop
-- Vagrant 1.7.2
+- Vagrant 2.0.1
 - VirtualBox >= 5+
 
 ## Installation
@@ -79,7 +79,7 @@ sudo apt-get install nfs-kernel-server
 - mcrypt
 - make
 - memcached
-- mysql - 5.7.19
+- mysql - 5.7.21
 - nginx - 1.10.3
 - ohmyzsh
 - php - 7.1
@@ -105,9 +105,10 @@ sudo apt-get install nfs-kernel-server
 
 ## Javascript related packages
 
-- Nodejs - 6.11.3
+- Nodejs - 8.9.4
 - npm - 5.0.4
 - gulp - 3.9.1
+- yarn - 1.3.2
 
 
 ## Create swap

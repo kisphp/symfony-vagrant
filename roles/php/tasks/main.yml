@@ -1,3 +1,3 @@
 ---
-- include: components/php.yml
-- include: components/xdebug.yml
+- include_tasks: components/php.yml
+- include_tasks: components/xdebug.yml

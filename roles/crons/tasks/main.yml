@@ -1,0 +1,35 @@
+---
+- name: "Clean crons user"
+  become: yes
+  become_user: "{{ user }}"
+  shell: "crontab -r"
+  when:
+    - crontab != None
+  ignore_errors: true
+  tags: crons
+
+- name: "Set cronjobs"
+  become: yes
+  become_user: "{{ user }}"
+  cron: name="{{ item.name }}" minute="{{ item.minute }}" hour="{{ item.hour }}" day="{{ item.day }}" month="{{ item.month }}" weekday="{{ item.weekday }}" job="{{ item.job }}"
+  with_items:
+    - "{{ crontab }}"
+  when:
+    - crontab != None
+  tags: crons
+
+
+- name: "Clean crons root"
+  shell: "crontab -r"
+  when:
+    - crontab_root != None
+  ignore_errors: true
+  tags: crons
+
+- name: "Set root cronjobs"
+  cron: name="{{ item.name }}" minute="{{ item.minute }}" hour="{{ item.hour }}" day="{{ item.day }}" month="{{ item.month }}" weekday="{{ item.weekday }}" job="{{ item.job }}"
+  with_items:
+    - "{{ crontab_root }}"
+  when:
+    - crontab_root != None
+  tags: crons

@@ -20,6 +20,7 @@
     - { role: nodejs }
     - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
+    - { role: crons }
     - { role: composer }
     - { role: kisphp }
     - { role: redis }
