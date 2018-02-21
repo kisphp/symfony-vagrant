@@ -5,3 +5,4 @@
   ignore_errors: True
   tags:
     - nodejs
+    - npm
