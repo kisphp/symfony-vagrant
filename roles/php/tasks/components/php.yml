@@ -2,10 +2,14 @@
 - name: "Add repository for Ubuntu"
   become: true
   apt_repository: repo={{ php_ppa }}
+  tags:
+    - php
 
 - name: "Install PHP 7 packages"
   apt: name={{ item }} update_cache=yes state=latest
   with_items: "{{ php_apt_modules }}"
+  tags:
+    - php
 
 - name: "Generate PHP FPM pool.d config"
   template:
@@ -14,6 +18,8 @@
     owner: "root"
     group: "root"
     mode: 0644
+  tags:
+    - php
 
 - name: "Generate FPM PHP ini"
   template:
@@ -24,6 +30,8 @@
     mode: 0644
   vars:
     config: "{{ php_ini.fpm }}"
+  tags:
+    - php
 
 - name: "Generate CLI PHP ini"
   template:
@@ -34,6 +42,8 @@
     mode: 0644
   vars:
     config: "{{ php_ini.cli }}"
+  tags:
+    - php
 
 - name: "Make sure the socket file has the correct rights"
   file:
@@ -45,13 +55,30 @@
   become: yes
   become_method: "sudo"
   when: webserver_name == "nginx"
+  tags:
+    - php
+
+- name: "Disable PHP Opcache"
+  file:
+    path: "/etc/php/7.1/{{ item }}/conf.d/10-opcache.ini"
+    state: absent
+  ignore_errors: True
+  with_items:
+    - cli
+    - fpm
+  tags:
+    - php
 
 - name: "Restart php-fpm"
   service: name={{ php7_fpm_service_name }} state=restarted
   become: yes
   become_method: "sudo"
   when: webserver_name == "nginx"
+  tags:
+    - php
 
 - name: "Install apache packages for php 7"
   apt: name=libapache2-mod-php7.1 update_cache=yes state=present
   when: webserver_name == "apache2"
+  tags:
+    - php

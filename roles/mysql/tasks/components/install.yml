@@ -1,0 +1,21 @@
+---
+- name: "Install MySQL packages"
+  apt:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ mysql_apt_modules }}"
+  tags:
+    - mysql
+    - mysql-install
+
+- name: "Copy mysqld.cnf file"
+  become: yes
+  become_method: "sudo"
+  template:
+    src: "mysqld.cnf.j2"
+    dest: "/etc/mysql/mysql.conf.d/mysqld.cnf"
+  notify: "reload mysql"
+  tags:
+    - mysql
+    - mysql-install
+

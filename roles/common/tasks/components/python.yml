@@ -1,22 +1,32 @@
 - name: "Install python apt modules"
   apt: name={{ item }} update_cache=yes
   with_items: "{{ python_apt_modules }}"
+  tags:
+    - python
 
 - name: "Download pip installer"
   get_url:
     url: https://bootstrap.pypa.io/get-pip.py
     dest: /tmp/get-pip.py
     mode: 0644
+  tags:
+    - python
 
 - name: "Install Python PIP"
   command: python /tmp/get-pip.py
+  tags:
+    - python
 
 - name: "Delete pip installer"
   file:
     path: /tmp/get-pip.py
     state: absent
+  tags:
+    - python
 
 - name: "Install Python PIP modules"
   pip: name={{ item }}
   ignore_errors: yes
   with_items: "{{ python_pip_modules }}"
+  tags:
+    - python

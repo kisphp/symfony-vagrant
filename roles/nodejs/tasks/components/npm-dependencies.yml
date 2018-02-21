@@ -3,3 +3,5 @@
   npm: name={{ item }} global=yes
   with_items: "{{ npm_dependencies }}"
   ignore_errors: True
+  tags:
+    - nodejs

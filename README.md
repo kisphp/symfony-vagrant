@@ -1,7 +1,7 @@
 ## Requirements
 
 - Mac OS X or Ubuntu Desktop
-- Vagrant 1.7.2
+- Vagrant 2.0.1
 - VirtualBox >= 5+
 
 ## Installation
@@ -32,11 +32,37 @@ cd ../server
 echo "_vm/" >> .gitignore 
 
 # install dependencies
-composer install
+composer install --no-interaction
 
 ```
 
-> Composer will require interaction to build `parameters.yml` file.
+## Control ansible setup
+
+You can list all ansible TASKS
+```bash
+./run-ansible.sh --list-tasks
+```
+
+You can list all ansible TAGS
+```bash
+./run-ansible.sh --list-tags
+```
+
+You can run individual tags. For example if you add a new mysql user just run
+```bash
+./run-ansible.sh --tags mysql-users
+```
+
+If you update php settings run:
+```bash
+./run-ansible.sh --tags php
+```
+
+You also can run multiple tags at once
+```bash
+./run-ansible.sh --tags php,xdebug
+```
+
 
 ## Use multiple VMs
 
@@ -79,7 +105,7 @@ sudo apt-get install nfs-kernel-server
 - mcrypt
 - make
 - memcached
-- mysql - 5.7.19
+- mysql - 5.7.21
 - nginx - 1.10.3
 - ohmyzsh
 - php - 7.1
@@ -105,9 +131,10 @@ sudo apt-get install nfs-kernel-server
 
 ## Javascript related packages
 
-- Nodejs - 6.11.3
+- Nodejs - 8.9.4
 - npm - 5.0.4
 - gulp - 3.9.1
+- yarn - 1.3.2
 
 
 ## Create swap

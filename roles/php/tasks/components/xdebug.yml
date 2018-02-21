@@ -7,6 +7,9 @@
     group: "root"
     mode: 0644
   when: php_xdebug_enabled == True
+  tags:
+    - php
+    - xdebug
 
 - name: "Enable Apache XDEBUG"
   file:
@@ -17,6 +20,9 @@
     state=link
   when: php_xdebug_enabled == True and webserver_name == 'apache2'
   ignore_errors: True
+  tags:
+    - php
+    - xdebug
 
 - name: "Enable CLI XDEBUG"
   file:
@@ -27,6 +33,9 @@
     state=link
   when: php_xdebug_enabled == True
   ignore_errors: True
+  tags:
+    - php
+    - xdebug
 
 - name: "Enable FPM XDEBUG"
   file:
@@ -37,18 +46,30 @@
     state=link
   when: php_xdebug_enabled == True
   ignore_errors: True
+  tags:
+    - php
+    - xdebug
 
 - name: "Disable Apache Xdebug"
   file: path="/etc/php/{{ php7_version }}/apache2/conf.d/20-xdebug.ini" state=absent
   when: php_xdebug_enabled != True
   ignore_errors: True
+  tags:
+    - php
+    - xdebug
 
 - name: "Disable CLI Xdebug"
   file: path="/etc/php/{{ php7_version }}/cli/conf.d/20-xdebug.ini" state=absent
   when: php_xdebug_enabled != True
   ignore_errors: True
+  tags:
+    - php
+    - xdebug
 
 - name: "Disable FPM Xdebug"
   file: path="/etc/php/{{ php7_version }}/fpm/conf.d/20-xdebug.ini" state=absent
   when: php_xdebug_enabled != True
   ignore_errors: True
+  tags:
+    - php
+    - xdebug

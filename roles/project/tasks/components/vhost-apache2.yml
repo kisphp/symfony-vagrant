@@ -9,6 +9,10 @@
     mode=0644
   notify:
     - reload apache
+  tags:
+    - project
+    - apache
+    - apache2
 
 - name: "Create vhost symlink"
   file:
@@ -17,3 +21,7 @@
     state=link
   notify:
     - reload apache
+  tags:
+    - project
+    - apache
+    - apache2

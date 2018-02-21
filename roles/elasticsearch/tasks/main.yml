@@ -3,15 +3,24 @@
   apt_key:
     url: https://packages.elastic.co/GPG-KEY-elasticsearch
     state: present
+  tags:
+    - elasticsearch
+    - es
 
 - name: "Add Elasticsearch repository"
   apt_repository:
     repo: 'deb http://packages.elastic.co/elasticsearch/2.x/debian stable main'
     state: present
     update_cache: yes
+  tags:
+    - elasticsearch
+    - es
 
 - name: Install Elasticsearch.
   apt: pkg=elasticsearch state=present
+  tags:
+    - elasticsearch
+    - es
 
 - name: "Configure Elasticsearch"
   template:
@@ -21,9 +30,18 @@
     group: elasticsearch
     mode: 0750
   notify: restart elasticsearch
+  tags:
+    - elasticsearch
+    - es
 
 - name: "Start Elasticsearch"
   service: name=elasticsearch state=started enabled=yes
+  tags:
+    - elasticsearch
+    - es
 
 - name: "Make sure Elasticsearch is running before proceeding"
   wait_for: host={{ elasticsearch_network_host }} port={{ elasticsearch_http_port }} delay=3 timeout=60
+  tags:
+    - elasticsearch
+    - es

@@ -1,11 +1,17 @@
 ---
 - name: "Install nginx"
   apt: name=nginx update_cache=yes state=latest
+  tags:
+    - nginx
+    - server-nginx
 
 - name: "Uninstall Apache server"
   apt: name=apache2 state=absent
   notify:
     - reload nginx
+  tags:
+    - nginx
+    - server-nginx
 
 - name: "Remove default virtual host"
   file:
@@ -13,6 +19,9 @@
     state=absent
   notify:
     - reload nginx
+  tags:
+    - nginx
+    - server-nginx
 
 - name: "Copy nginx.conf to /etc/nginx/"
   template:
@@ -20,6 +29,9 @@
     dest: "/etc/nginx/nginx.conf"
   notify:
     - reload nginx
+  tags:
+    - nginx
+    - server-nginx
 
 #############################################
 ##                                         ##

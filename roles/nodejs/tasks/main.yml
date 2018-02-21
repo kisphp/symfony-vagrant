@@ -1,3 +1,7 @@
 ---
-- include: components/nodejs.yml
-- include: components/npm-dependencies.yml
+- include_tasks: components/nodejs.yml
+  tags:
+    - nodejs
+- include_tasks: components/npm-dependencies.yml
+  tags:
+    - nodejs

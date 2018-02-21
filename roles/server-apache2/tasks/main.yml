@@ -2,24 +2,44 @@
 - name: "Install apache packages"
   apt: name={{ item }} update_cache=yes state=present
   with_items: "{{ apache2_apt_modules }}"
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache
 
 - name: "Install apache packages for php 7"
   apt: name={{ item }} update_cache=yes state=present
   with_items: "{{ apache2_apt_modules }}"
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache
 
 - name: "Setup Apache modules"
   apache2_module: name={{ item }} state=present
   with_items: "{{ apache2_modules }}"
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache
 
 - name: "Copy apache2.conf to /etc/apache2/"
   template:
     src: apache2.conf.j2
     dest: "/etc/apache2/apache2.conf"
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache
 
 - name: "Copy apache envvars"
   template:
     src: envvars.j2
     dest: "/etc/apache2/envvars"
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache
 
 - name: "Remove default virtual host"
   file:
@@ -27,3 +47,7 @@
     state=absent
   notify:
     - reload apache
+  tags:
+    - apache2
+    - server-apache2
+    - server-apache

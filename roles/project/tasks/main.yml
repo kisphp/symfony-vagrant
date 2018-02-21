@@ -1,3 +1,5 @@
 ---
-- include: components/vhost-{{ webserver_name }}.yml
+- include_tasks: components/vhost-{{ webserver_name }}.yml
+  tags:
+    - project
 

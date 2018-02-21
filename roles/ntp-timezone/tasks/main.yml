@@ -1,6 +1,10 @@
 ---
 - name: "Install NTP server"
   apt: name=ntp update_cache=yes
+  tags:
+    - ntp
 
 - name: "Update timezone"
   command: timedatectl set-timezone {{ server_timezone }}
+  tags:
+    - ntp

@@ -16,14 +16,10 @@
 # It has been reported that passwords should be enclosed with ticks/quotes
 # escpecially if they contain "#" chars...
 # Remember to edit /etc/mysql/debian.cnf when changing the socket location.
-[client]
-port		= {{ mysql_port }}
-socket		= /var/run/mysqld/mysqld.sock
 
 # Here is entries for some specific programs
 # The following values assume you have at least 32M ram
 
-# This was formally known as [safe_mysqld]. Both versions are currently parsed.
 [mysqld_safe]
 socket		= /var/run/mysqld/mysqld.sock
 nice		= 0
@@ -35,26 +31,33 @@ nice		= 0
 user		= mysql
 pid-file	= /var/run/mysqld/mysqld.pid
 socket		= /var/run/mysqld/mysqld.sock
-port		= {{ mysql_port }}
+port		= 3306
 basedir		= /usr
 datadir		= /var/lib/mysql
 tmpdir		= /tmp
 lc-messages-dir	= /usr/share/mysql
 skip-external-locking
+{% if mysql_old_compatibility is defined and mysql_old_compatibility == True %}
+sql_mode = STRICT_TRANS_TABLES,NO_ZERO_IN_DATE,NO_ZERO_DATE,ERROR_FOR_DIVISION_BY_ZERO,NO_AUTO_CREATE_USER,NO_ENGINE_SUBSTITUTION
+{% endif %}
 #
 # Instead of skip-networking the default is now to listen only on
 # localhost which is more compatible and is not less secure.
-{% if mysql_settings_only_local_connections == False %}#{% endif %}bind-address		= 127.0.0.1
+{% if mysql_settings_only_local_connections == True %}
+bind-address		= 127.0.0.1
+{% else %}
+# bind-address		= 127.0.0.1
+{% endif %}
 #
 # * Fine Tuning
 #
-key_buffer		= 16M
-max_allowed_packet	= {{ mysql_settings_max_allowed_packet }}
+key_buffer_size		= 16M
+max_allowed_packet	= {{ mysql_settings_max_allowed_packet | default('16M') }}
 thread_stack		= 192K
 thread_cache_size       = 8
 # This replaces the startup script and checks MyISAM tables if needed
 # the first time they are touched
-myisam-recover         = BACKUP
+myisam-recover-options  = BACKUP
 #max_connections        = 100
 #table_cache            = 64
 #thread_concurrency     = 10
@@ -69,8 +72,13 @@ query_cache_size        = 16M
 # Both location gets rotated by the cronjob.
 # Be aware that this log type is a performance killer.
 # As of 5.1 you can enable the log at runtime!
-{% if mysql_enable_mysql_log != False %}#{% endif %}general_log_file        = /var/log/mysql/mysql.log
-{% if mysql_enable_mysql_log != False %}#{% endif %}general_log             = 1
+{% if mysql_enable_mysql_log == True %}
+general_log_file        = /var/log/mysql/mysql.log
+general_log             = 1
+{% else %}
+#general_log_file        = /var/log/mysql/mysql.log
+#general_log             = 1
+{% endif %}
 #
 # Error log - should be very few entries.
 #
@@ -87,7 +95,7 @@ log_error = /var/log/mysql/error.log
 #server-id		= 1
 #log_bin			= /var/log/mysql/mysql-bin.log
 expire_logs_days	= 10
-max_binlog_size         = 100M
+max_binlog_size   = 100M
 #binlog_do_db		= include_database_name
 #binlog_ignore_db	= include_database_name
 #
@@ -106,22 +114,3 @@ max_binlog_size         = 100M
 # ssl-ca=/etc/mysql/cacert.pem
 # ssl-cert=/etc/mysql/server-cert.pem
 # ssl-key=/etc/mysql/server-key.pem
-
-
-
-[mysqldump]
-quick
-quote-names
-max_allowed_packet	= {{ mysql_settings_max_allowed_packet }}
-
-[mysql]
-#no-auto-rehash	# faster start of mysql but no tab completition
-
-[isamchk]
-key_buffer		= 16M
-
-#
-# * IMPORTANT: Additional settings that can override those from this file!
-#   The files must end with '.cnf', otherwise they'll be ignored.
-#
-!includedir /etc/mysql/conf.d/

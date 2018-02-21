@@ -4,7 +4,7 @@
   become_method: sudo
 
   vars_files:
-    - environment.yml
+    - config.yml
 
   pre_tasks:
     - name: "update apt cache"
@@ -16,19 +16,20 @@
     - { role: banner }
     - { role: ntp-timezone }
     - { role: ssh }
+    - { role: crons }
     - { role: oh-my-zsh }
-    - { role: nodejs }
     - { role: "server-{{ webserver_name }}", when: webserver_name != 'none' }
     - { role: php }
     - { role: composer }
+    - { role: nodejs }
     - { role: kisphp }
-    - { role: redis }
     - { role: mysql }
     - { role: project }
-    #- { role: jekyll }
-    #- { role: fail2ban }
+#    - { role: redis }
+#    - { role: jekyll }
+#    - { role: fail2ban }
 
     # Java and elasticsearch are disabled by default, if you need them, just uncomment the following lines
-    #- { role: java }
-    #- { role: elasticsearch }
-    #- { role: kibana }
+#    - { role: java }
+#    - { role: elasticsearch }
+#    - { role: kibana }

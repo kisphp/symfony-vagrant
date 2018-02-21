@@ -2,3 +2,5 @@
 .idea/
 *.log
 *.retry
+vagrant.ini
+config.yml

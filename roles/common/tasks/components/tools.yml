@@ -2,3 +2,5 @@
 - name: "Install General Tools"
   apt: name={{ item }} update_cache=yes
   with_items: "{{ apt_general_tools }}"
+  tags:
+    - apt

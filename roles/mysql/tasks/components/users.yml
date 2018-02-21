@@ -1,0 +1,28 @@
+---
+- name: "Create database users"
+  mysql_user:
+    login_user=root
+    login_password=''
+    name={{ item.user }}
+    password={{ item.pass }}
+    priv={{ item.grant | default('*') }}.*:ALL,GRANT
+    host={{ item.host }}
+    state=present
+  ignore_errors: True
+  with_items: "{{ mysql_databases }}"
+  tags:
+    - mysql
+    - mysql-users
+
+- name: "Create databases"
+  mysql_db:
+    login_user=root
+    login_password=''
+    name={{ item.name }}
+    encoding=utf8
+    state=present
+  ignore_errors: True
+  with_items: "{{ mysql_databases }}"
+  tags:
+    - mysql
+    - mysql-users

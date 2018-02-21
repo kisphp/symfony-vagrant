@@ -4,6 +4,8 @@
   with_items:
     - git
     - git-core
+  tags:
+    - git
 
 - name: "Make sure git config file exists"
   file:
@@ -11,10 +13,14 @@
     state: touch
     owner: "{{ user }}"
     group: "{{ user }}"
+  tags:
+    - git
 
 - name: "Git config push simple"
   git_config: name=push.default value=simple scope=global
   become_user: "{{ user }}"
+  tags:
+    - git
 
 
 #- name: "Configure git email"
@@ -37,6 +43,8 @@
     scope: global
     value: vim
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Set color"
   git_config:
@@ -44,6 +52,8 @@
     scope: global
     value: true
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "When pulling code, always rebase your local changes. (note that you probably want to set this to false (or just fetch+merge instead of pull) when working on a shared remote branch (trains are fine). See https://git-scm.com/book/en/v2/Git-Branching-Rebasing)"
   git_config:
@@ -51,6 +61,8 @@
     scope: global
     value: true
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "When pushing code, always push only your current branch to a branch of the same name"
   git_config:
@@ -58,6 +70,8 @@
     scope: global
     value: current
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Automatically prune deleted branches from your local copy when you fetch (or pull)"
   git_config:
@@ -65,6 +79,8 @@
     scope: global
     value: true
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Tell git not to mess with your line endings"
   git_config:
@@ -72,6 +88,8 @@
     scope: global
     value: false
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Show branch names with git log"
   git_config:
@@ -79,6 +97,8 @@
     scope: global
     value: short
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Enable parallel index preload for operations like git diff"
   git_config:
@@ -86,6 +106,8 @@
     scope: global
     value: true
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Git for Windows offers a filesystem cache which accelerates operations in many cases, after an initial 'warm-up'"
   git_config:
@@ -93,6 +115,8 @@
     scope: global
     value: true
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Ignore symlinks"
   git_config:
@@ -100,6 +124,8 @@
     scope: global
     value: false
   become_user: "{{ user }}"
+  tags:
+    - git
 
 - name: "Disable SSL verify"
   git_config:
@@ -107,3 +133,5 @@
     scope: global
     value: false
   become_user: "{{ user }}"
+  tags:
+    - git
