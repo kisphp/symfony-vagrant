@@ -33,3 +33,4 @@
 #    - { role: java }
 #    - { role: elasticsearch }
 #    - { role: kibana }
+#    - { role: jenkins }
