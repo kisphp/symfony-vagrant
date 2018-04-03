@@ -53,3 +53,23 @@
     - ohmyzsh
     - oh-my-zsh
     - zsh
+
+- name: "Add Auto suggestions plugin"
+  git: repo=https://github.com/zsh-users/zsh-autosuggestions.git dest=/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  become: yes
+  become_user: "{{ user }}"
+  ignore_errors: yes
+  tags:
+    - ohmyzsh
+    - oh-my-zsh
+    - zsh
+
+- name: "Add zsh-syntax-highlighting plugin"
+  git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest=/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  become: yes
+  become_user: "{{ user }}"
+  ignore_errors: yes
+  tags:
+    - ohmyzsh
+    - oh-my-zsh
+    - zsh
