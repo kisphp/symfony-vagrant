@@ -25,6 +25,7 @@
     - { role: kisphp }
     - { role: mysql }
     - { role: project }
+    - { role: mssql }
 #    - { role: redis }
 #    - { role: jekyll }
 #    - { role: fail2ban }
