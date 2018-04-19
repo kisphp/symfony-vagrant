@@ -9,7 +9,7 @@
   tags:
     - mssql
 
-- name: "Add MSSQL repository"
+- name: "Add MSSQL server repository"
   apt_repository:
     repo: 'deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/mssql-server-2017 xenial main'
     state: present
@@ -17,47 +17,76 @@
   tags:
     - mssql
 
-- name: "refresh apt-get cache for server repo (Ubuntu)"
+- name: "Add MSSQL tools repository"
+  apt_repository:
+    repo: 'deb [arch=amd64] https://packages.microsoft.com/ubuntu/16.04/prod xenial main'
+    state: present
+    update_cache: yes
+  tags:
+    - mssql
+
+- name: "refresh apt-get cache for server repo"
   apt:
     update_cache: yes
+  tags:
+    - mssql
 
 - name: "Install dependencies"
   apt:
     name: "{{ item }}"
     state: latest
   with_items:
-    - msodbcsql17
-    - libunwind8
-    - libjemalloc1
-    - libc++1
+
     - gdb
+    - gdbserver
+    - libbabeltrace-ctf1
+    - libbabeltrace1
+    - libc++1
+    - libc6-dbg
+    - libcurl3
+    - libjemalloc1
     - libsss-nss-idmap0
-    - msodbcsql17
+    - libunwind8
+#    - msodbcsql17
+#    - libunwind8
+#    - libjemalloc1
+#    - libc++1
+#    - gdb
+#    - libsss-nss-idmap0
+#    - msodbcsql17
   environment:
     ACCEPT_EULA: 'y'
-
-- name: "Install MSSQL"
+  tags:
+    - mssql
+#
+- name: "Install MSSQL server"
   apt:
     name: mssql-server
     state: latest
+  tags:
+    - mssql
 
-- name: "Install MSSQL"
+- name: "Install MSSQL tools"
   apt:
     name: mssql-tools
     state: latest
   environment:
     ACCEPT_EULA: 'y'
-
+  tags:
+    - mssql
+#
 #- name: "Install MSSQL"
 #  apt:
 #    name: "{{ item }}"
 #    state: latest
 #  with_items:
-#    - mssql-server
-#    - mssql-tools
 #    - unixodbc-dev
-#  environment:
-#    ACCEPT_EULA: 'y'
+#  tags:
+#    - mssql
+
+
+
+
 
 # install mssql-server package
 #- name: "install mssql-server repo (Ubuntu)"
