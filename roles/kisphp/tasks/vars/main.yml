@@ -1,0 +1,3 @@
+server_manager:
+  repo: https://gitlab.com/kisphp/server-manager.git
+  path: "/home/{{ user }}/server-manager"
