@@ -1,13 +1,16 @@
 ---
 - name: "Add repository for Ubuntu"
   become: true
-  apt_repository: repo={{ php_ppa }}
+  apt_repository:
+    repo: "{{ php_ppa }}"
   tags:
     - php
 
 - name: "Install PHP 7 packages"
-  apt: name={{ item }} update_cache=yes state=latest
-  with_items: "{{ php_apt_modules }}"
+  apt:
+    name: "{{ php_apt_modules }}"
+    update_cache: yes
+    state: latest
   tags:
     - php
 
@@ -70,7 +73,9 @@
     - php
 
 - name: "Restart php-fpm"
-  service: name={{ php7_fpm_service_name }} state=restarted
+  service:
+    name: "{{ php7_fpm_service_name }}"
+    state: restarted
   become: yes
   become_method: "sudo"
   when: webserver_name == "nginx"
@@ -78,7 +83,10 @@
     - php
 
 - name: "Install apache packages for php 7"
-  apt: name=libapache2-mod-php7.1 update_cache=yes state=present
+  apt:
+    name: libapache2-mod-php7.1
+    update_cache: yes
+    state: present
   when: webserver_name == "apache2"
   tags:
     - php

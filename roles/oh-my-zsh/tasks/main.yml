@@ -1,5 +1,6 @@
 - name: "Check if oh-my-zsh is installed"
-  stat: path=/home/{{ user }}/.oh-my-zsh
+  stat:
+    path: "/home/{{ user }}/.oh-my-zsh"
   register: ohmyzsh_directory
   tags:
     - ohmyzsh
@@ -7,7 +8,9 @@
     - zsh
 
 - name: "Install ZSH"
-  apt: name=zsh update_cache=yes
+  apt:
+    name: zsh
+    update_cache: yes
   when: ohmyzsh_directory.stat.exists == False
   ignore_errors: yes
   tags:
@@ -16,7 +19,9 @@
     - zsh
 
 - name: "Clone oh-my-zsh repository"
-  git: repo=https://github.com/robbyrussell/oh-my-zsh.git dest=/home/{{ user }}/.oh-my-zsh
+  git:
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: "/home/{{ user }}/.oh-my-zsh"
   become: yes
   become_user: "{{ user }}"
   register: result
@@ -28,34 +33,44 @@
     - zsh
 
 - name: "Remove standard zshrc"
-  file: path=/home/{{ user }}/.zshrc state=absent
-  when: result|succeeded
+  file:
+    path: "/home/{{ user }}/.zshrc"
+    state: absent
+  when: result is succeeded
   tags:
     - ohmyzsh
     - oh-my-zsh
     - zsh
 
 - name: "Deploy .zshrc"
-  template: src=zshrc.j2 dest=/home/{{ user }}/.zshrc owner={{ user }} group={{ user }}
+  template:
+    src: zshrc.j2
+    dest: "/home/{{ user }}/.zshrc"
+    owner: "{{ user }}"
+    group: "{{ user }}"
   become: yes
   become_user: "{{ user }}"
   ignore_errors: yes
-  when: result|succeeded
+  when: result is succeeded
   tags:
     - ohmyzsh
     - oh-my-zsh
     - zsh
 
 - name: "Set zsh as default shell"
-  user: name={{ user }} shell=/bin/zsh
-  when: result|succeeded
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+  when: result is succeeded
   tags:
     - ohmyzsh
     - oh-my-zsh
     - zsh
 
 - name: "Add Auto suggestions plugin"
-  git: repo=https://github.com/zsh-users/zsh-autosuggestions.git dest=/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+  git:
+    repo: https://github.com/zsh-users/zsh-autosuggestions.git
+    dest: "/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-autosuggestions"
   become: yes
   become_user: "{{ user }}"
   ignore_errors: yes
@@ -65,7 +80,9 @@
     - zsh
 
 - name: "Add zsh-syntax-highlighting plugin"
-  git: repo=https://github.com/zsh-users/zsh-syntax-highlighting.git dest=/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+  git:
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting.git
+    dest: "/home/{{ user }}/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting"
   become: yes
   become_user: "{{ user }}"
   ignore_errors: yes

@@ -1,7 +1,7 @@
 ## Requirements
 
 - Mac OS X or Ubuntu Desktop
-- Vagrant 2.0.1
+- Vagrant 2.2.0+
 - VirtualBox >= 5+
 
 ## Installation

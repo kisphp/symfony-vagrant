@@ -1,6 +1,9 @@
 ---
 - name: "Kisphp Dotfiles"
-  get_url: url=https://raw.githubusercontent.com/kisphp/dotfiles/master/install.sh dest=/tmp/kisphp-install.sh mode=0755
+  get_url:
+    url: https://gitlab.com/marius-rizac/dotfiles/raw/master/install.sh
+    dest: /tmp/kisphp-install.sh
+    mode: 0755
   tags:
     - kisphp
 

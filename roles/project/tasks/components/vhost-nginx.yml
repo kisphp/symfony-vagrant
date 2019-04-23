@@ -3,31 +3,35 @@
   become: yes
   become_method: "sudo"
   template:
-    src="nginx/site.conf.j2"
-    dest="/etc/nginx/sites-available/{{ project_name }}"
-    owner=root
-    mode=0644
+    src: "nginx/site.conf.j2"
+    dest: "/etc/nginx/sites-available/{{ project_name }}"
+    owner: root
+    mode: 0644
   tags:
     - project
     - nginx
 
 - name: "Create vhost symlink"
   file:
-    src="/etc/nginx/sites-available/{{ project_name }}"
-    dest="/etc/nginx/sites-enabled/{{ project_name }}"
-    state=link
+    src: "/etc/nginx/sites-available/{{ project_name }}"
+    dest: "/etc/nginx/sites-enabled/{{ project_name }}"
+    state: link
   tags:
     - project
     - nginx
 
 - name: "Restart Nginx"
-  service: name=nginx state=reloaded
+  service:
+    name: nginx
+    state: reloaded
   tags:
     - project
     - nginx
 
 - name: "Reload FPM"
-  service: name=php{{ php7_version }}-fpm state=reloaded
+  service:
+    name: "php{{ php7_version }}-fpm"
+    state: reloaded
   tags:
     - project
     - nginx

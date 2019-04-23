@@ -11,7 +11,14 @@
 - name: "Set cronjobs"
   become: yes
   become_user: "{{ user }}"
-  cron: name="{{ item.name }}" minute="{{ item.minute }}" hour="{{ item.hour }}" day="{{ item.day }}" month="{{ item.month }}" weekday="{{ item.weekday }}" job="{{ item.job }}"
+  cron:
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    day: "{{ item.day }}"
+    month: "{{ item.month }}"
+    weekday: "{{ item.weekday }}"
+    job: "{{ item.job }}"
   with_items:
     - "{{ crontab }}"
   when:
@@ -27,7 +34,14 @@
   tags: crons
 
 - name: "Set root cronjobs"
-  cron: name="{{ item.name }}" minute="{{ item.minute }}" hour="{{ item.hour }}" day="{{ item.day }}" month="{{ item.month }}" weekday="{{ item.weekday }}" job="{{ item.job }}"
+  cron:
+    name: "{{ item.name }}"
+    minute: "{{ item.minute }}"
+    hour: "{{ item.hour }}"
+    day: "{{ item.day }}"
+    month: "{{ item.month }}"
+    weekday: "{{ item.weekday }}"
+    job: "{{ item.job }}"
   with_items:
     - "{{ crontab_root }}"
   when:

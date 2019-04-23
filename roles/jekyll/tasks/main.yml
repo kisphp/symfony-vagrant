@@ -1,4 +1,9 @@
 ---
+- name: "Install Jekill"
+  apt:
+    name: jekyll
+    state: present
+
 - name: "Build site docs"
   command: /usr/bin/jekyll build
   args:

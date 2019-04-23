@@ -1,12 +1,17 @@
 ---
 - name: "Install nginx"
-  apt: name=nginx update_cache=yes state=latest
+  apt:
+    name: nginx
+    update_cache: yes
+    state: latest
   tags:
     - nginx
     - server-nginx
 
 - name: "Uninstall Apache server"
-  apt: name=apache2 state=absent
+  apt:
+    name: apache2
+    state: absent
   notify:
     - reload nginx
   tags:
@@ -15,8 +20,8 @@
 
 - name: "Remove default virtual host"
   file:
-    path=/etc/nginx/sites-enabled/default
-    state=absent
+    path: /etc/nginx/sites-enabled/default
+    state: absent
   notify:
     - reload nginx
   tags:

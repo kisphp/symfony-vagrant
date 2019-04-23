@@ -1,7 +1,9 @@
 ---
 - name: "Install NPM Dependencies"
-  npm: name={{ item }} global=yes
-  with_items: "{{ npm_dependencies }}"
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items: ["gulp"]
   ignore_errors: True
   tags:
     - nodejs

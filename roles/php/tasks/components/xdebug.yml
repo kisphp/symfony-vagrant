@@ -13,11 +13,11 @@
 
 - name: "Enable Apache XDEBUG"
   file:
-    src="/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
-    dest="/etc/php/{{ php7_version }}/apache2/conf.d/20-xdebug.ini"
-    owner=root
-    group=root
-    state=link
+    src: "/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
+    dest: "/etc/php/{{ php7_version }}/apache2/conf.d/20-xdebug.ini"
+    owner: root
+    group: root
+    state: link
   when: php_xdebug_enabled == True and webserver_name == 'apache2'
   ignore_errors: True
   tags:
@@ -26,11 +26,11 @@
 
 - name: "Enable CLI XDEBUG"
   file:
-    src="/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
-    dest="/etc/php/{{ php7_version }}/cli/conf.d/20-xdebug.ini"
-    owner=root
-    group=root
-    state=link
+    src: "/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
+    dest: "/etc/php/{{ php7_version }}/cli/conf.d/20-xdebug.ini"
+    owner: root
+    group: root
+    state: link
   when: php_xdebug_enabled == True
   ignore_errors: True
   tags:
@@ -39,11 +39,11 @@
 
 - name: "Enable FPM XDEBUG"
   file:
-    src="/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
-    dest="/etc/php/{{ php7_version }}/fpm/conf.d/20-xdebug.ini"
-    owner=root
-    group=root
-    state=link
+    src: "/etc/php/{{ php7_version }}/mods-available/xdebug.ini"
+    dest: "/etc/php/{{ php7_version }}/fpm/conf.d/20-xdebug.ini"
+    owner: root
+    group: root
+    state: link
   when: php_xdebug_enabled == True
   ignore_errors: True
   tags:
@@ -51,7 +51,9 @@
     - xdebug
 
 - name: "Disable Apache Xdebug"
-  file: path="/etc/php/{{ php7_version }}/apache2/conf.d/20-xdebug.ini" state=absent
+  file:
+    path: "/etc/php/{{ php7_version }}/apache2/conf.d/20-xdebug.ini"
+    state: absent
   when: php_xdebug_enabled != True
   ignore_errors: True
   tags:
@@ -59,7 +61,9 @@
     - xdebug
 
 - name: "Disable CLI Xdebug"
-  file: path="/etc/php/{{ php7_version }}/cli/conf.d/20-xdebug.ini" state=absent
+  file:
+    path: "/etc/php/{{ php7_version }}/cli/conf.d/20-xdebug.ini"
+    state: absent
   when: php_xdebug_enabled != True
   ignore_errors: True
   tags:
@@ -67,7 +71,9 @@
     - xdebug
 
 - name: "Disable FPM Xdebug"
-  file: path="/etc/php/{{ php7_version }}/fpm/conf.d/20-xdebug.ini" state=absent
+  file:
+    path: "/etc/php/{{ php7_version }}/fpm/conf.d/20-xdebug.ini"
+    state: absent
   when: php_xdebug_enabled != True
   ignore_errors: True
   tags:

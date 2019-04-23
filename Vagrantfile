@@ -7,7 +7,7 @@ SSH_PORT = 10080
 require_relative File.join(File.dirname(__FILE__), 'ini_file_generator.rb')
 
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/xenial64"
+    config.vm.box = "ubuntu/bionic64"
     config.vm.hostname = VM_NAME
     config.vm.synced_folder "../", "/home/server", type: SYNC_TYPE, create: true
     config.nfs.map_uid = Process.uid
@@ -38,6 +38,7 @@ Vagrant.configure("2") do |config|
 
     config.vm.provision "ansible_local" do |ans|
         ans.playbook = "setup-vagrant.yml"
+        ans.compatibility_mode = "2.0"
         ans.install_mode = "pip_args_only"
         ans.pip_args = "-r /vagrant/requirements.txt"
     end

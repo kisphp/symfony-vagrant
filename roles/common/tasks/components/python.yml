@@ -1,6 +1,7 @@
 - name: "Install python apt modules"
-  apt: name={{ item }} update_cache=yes
-  with_items: "{{ python_apt_modules }}"
+  apt:
+    name: "{{ python_apt_modules }}"
+    update_cache: yes
   tags:
     - python
 
@@ -25,8 +26,8 @@
     - python
 
 - name: "Install Python PIP modules"
-  pip: name={{ item }}
+  pip:
+    name: "{{ python_pip_modules }}"
   ignore_errors: yes
-  with_items: "{{ python_pip_modules }}"
   tags:
     - python

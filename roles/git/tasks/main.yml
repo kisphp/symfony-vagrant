@@ -1,9 +1,8 @@
 ---
 - name: "Install git"
-  apt: name={{ item }} update_cache=yes
-  with_items:
-    - git
-    - git-core
+  apt:
+    name: ['git', 'git-core']
+    update_cache: yes
   tags:
     - git
 
@@ -17,7 +16,10 @@
     - git
 
 - name: "Git config push simple"
-  git_config: name=push.default value=simple scope=global
+  git_config:
+    name: push.default
+    value: simple
+    scope: global
   become_user: "{{ user }}"
   tags:
     - git
