@@ -12,9 +12,9 @@ php_apt_modules:
   - php{{ php7_version }}-mysql
   - php{{ php7_version }}-gd
   - php{{ php7_version }}-xml
-  - php{{ php7_version }}-mcrypt
   - php{{ php7_version }}-mbstring
   - php{{ php7_version }}-zip
+  - php-imagick
   - php-xdebug
 
 php_ini:
