@@ -19,8 +19,8 @@ server {
         fastcgi_param DOCUMENT_ROOT $realpath_root;
     }
 
-    error_log {{ server_path }}/nginx-error.log;
-    access_log {{ server_path }}/nginx-access.log;
+    #error_log {{ server_path }}/nginx-error.log;
+    #access_log {{ server_path }}/nginx-access.log;
 }
 
 #server {
