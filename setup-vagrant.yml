@@ -30,7 +30,7 @@
 #    - { role: jekyll }
 #    - { role: fail2ban }
 
-    # Java and elasticsearch are disabled by default, if you need them, just uncomment the following lines
+# Java and elasticsearch are disabled by default, if you need them, just uncomment the following lines
 #    - { role: java }
 #    - { role: elasticsearch }
 #    - { role: kibana }

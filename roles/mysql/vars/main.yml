@@ -1,10 +1,8 @@
 mysql_apt_modules:
-  - python-mysqldb
-  - mysql-client-core-5.7
-  - mysql-server-core-5.7
+  - python3-mysqldb
+  - mysql-client
+  - mysql-server
   - mysql-common
-  - mysql-client-5.7
-  - mysql-server-5.7
 
 mysql_port: 3306
 mysql_root_pass: ~
