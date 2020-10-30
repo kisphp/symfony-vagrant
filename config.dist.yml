@@ -5,7 +5,7 @@ server_public_dir: web # public for symfony 4
 
 project_name: dev.local
 
-php7_version: "7.2"
+php7_version: "7.4"
 
 user: vagrant
 
@@ -51,7 +51,7 @@ mysql_old_compatibility: True
 ## NodeJS
 ## Pin-Priority of NodeSource repository
 nodejs_nodesource_pin_priority: 500
-nodejs_version: "11.x"
+nodejs_version: "14.x"
 
 
 java_home: ""

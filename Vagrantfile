@@ -6,8 +6,18 @@ SSH_PORT = 10080
 
 require_relative File.join(File.dirname(__FILE__), 'ini_file_generator.rb')
 
+$script = <<-SCRIPT
+apt-get update
+apt-get install -y python3 python3-pip
+mkdir -p ~/.cache/pip/http
+pip3 install --upgrade pip
+pip3 install ansible
+ln -sf /usr/bin/python3 /usr/bin/python
+ln -sf /usr/bin/pip3 /usr/bin/pip
+SCRIPT
+
 Vagrant.configure("2") do |config|
-    config.vm.box = "ubuntu/bionic64"
+    config.vm.box = "ubuntu/focal64"
     config.vm.hostname = VM_NAME
     config.vm.synced_folder "../", "/home/server", type: SYNC_TYPE, create: true
     config.nfs.map_uid = Process.uid
@@ -36,11 +46,14 @@ Vagrant.configure("2") do |config|
       file.destination = "~/.ssh/id_rsa.pub"
     end
 
+    config.vm.provision "shell", inline: $script
+
     config.vm.provision "ansible_local" do |ans|
         ans.playbook = "setup-vagrant.yml"
         ans.compatibility_mode = "2.0"
         ans.install_mode = "pip_args_only"
         ans.pip_args = "-r /vagrant/requirements.txt"
+        ans.extra_vars = { ansible_python_interpreter: "/usr/bin/python3" }
     end
 
     config.vm.provider :virtualbox do |vb|
@@ -52,5 +65,4 @@ Vagrant.configure("2") do |config|
             "--vram", 32
         ])
     end
-
 end

@@ -98,43 +98,42 @@ sudo apt-get install nfs-kernel-server
 
 - build-essential
 - composer
-- curl - 7.47
-- git - 2.7.4
+- curl - 7.68
+- git - 2.25.1
 - htop
 - mc
 - mcrypt
 - make
 - memcached
-- mysql - 5.7.21
-- nginx - 1.10.3
+- mysql - 8.0.22
+- nginx - 1.18.0
 - ohmyzsh
-- php - 7.2
-  - "php7.2-common"
-  - "php7.2-cli"
-  - "php7.2-curl"
-  - "php7.2-cgi"
-  - "php7.2-fpm"
-  - "php7.2-gd"
-  - "php7.2-intl"
-  - "php7.2-json"
-  - "php7.2-mysql"
-  - "php7.2-mcrypt"
-  - "php7.2-mbstring"
-  - "php7.2-sqlite3"
-  - "php7.2-xml"
-  - "php7.2-zip"
+- php - 7.4
+  - "php7.4-common"
+  - "php7.4-cli"
+  - "php7.4-curl"
+  - "php7.4-cgi"
+  - "php7.4-fpm"
+  - "php7.4-gd"
+  - "php7.4-intl"
+  - "php7.4-json"
+  - "php7.4-mysql"
+  - "php7.4-mcrypt"
+  - "php7.4-mbstring"
+  - "php7.4-sqlite3"
+  - "php7.4-xml"
+  - "php7.4-zip"
   - "php-xdebug"
-- python - 2.7.22/3.5.2
+- python - 3.8.2
 - tree
 - vim
 - wget
 
 ## Javascript related packages
 
-- Nodejs - 8.9.4
-- npm - 5.0.4
-- gulp - 3.9.1
-- yarn - 1.3.2
+- Nodejs - 14.15.0
+- npm - 6.14.8
+- gulp - 2.3.0
 
 
 ## Create swap
